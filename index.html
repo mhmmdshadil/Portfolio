@@ -1,97 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO Meta Tags -->
-    <title>Muhammed Shadil – Portfolio, Projects & Contact</title>
-    <meta name="description" content="Official personal website of Muhammed Shadil MP – a 19-year-old tech enthusiast from Kerala. Explore my portfolio, projects, and contact info.">
-
-    <!-- Structured Data for Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Muhammed Shadil",
-      "url": "https://mhmmdshadil.github.io/muhammed-shadil/",
-      "email": "mailto:mhmmd.shadil.mp@gmail.com",
-      "sameAs": [
-        "https://www.instagram.com/mhmmd.shadil/"
-      ]
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muhammed Shadil MP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #1a1a2e, #16213e);
+      color: #e0e0e0;
+      font-family: 'Inter', sans-serif;
     }
-    </script>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            background: linear-gradient(to bottom, #1a1a2e, #16213e);
-            color: #e0e0e0;
-        }
-        a:hover {
-            color: #a78bfa;
-            transition: color 0.3s ease;
-        }
-    </style>
+    a:hover {
+      color: #a78bfa;
+      transition: color 0.3s ease;
+    }
+  </style>
 </head>
-<body class="font-sans">
-    <!-- Header Section -->
-    <header class="bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-8">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold">Muhammed Shadil</h1>
-            <p class="text-lg mt-2">19-year-old tech enthusiast from Kerala</p>
-        </div>
-    </header>
+<body>
+  <!-- Header Section -->
+  <header class="bg-gradient-to-r from-purple-900 to-indigo-900 py-12 mb-12 shadow-lg">
+    <div class="container mx-auto text-center flex flex-col items-center">
+      <img 
+        src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" 
+        alt="Muhammed Shadil MP" 
+        class="w-32 h-32 rounded-full border-4 border-purple-400 mb-6 object-cover"
+      />
+      <h1 class="text-5xl font-extrabold tracking-tight text-white drop-shadow-lg">
+        Muhammed Shadil MP
+      </h1>
+      <p class="mt-2 text-lg text-purple-300 font-semibold">19 yr old from Kerala</p>
+    </div>
+  </header>
 
-    <!-- About Section -->
-    <section class="py-12">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8 text-white">About Me</h2>
-            <p class="text-lg text-gray-300 max-w-2xl mx-auto">
-                I'm Muhammed Shadil, a curious mind exploring tech and AI to work smarter and express myself creatively through design and function.
-            </p>
-        </div>
-    </section>
+  <!-- About Section -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 text-white">About Me</h2>
+      <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+        I like to grind the Tech field and craft aesthetics along the way, Got a good Idea on how to use AI to cut down my work
+      </p>
+    </div>
+  </section>
 
-    <!-- Portfolio Section -->
-    <section class="py-12">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8 text-white">Portfolio & Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-white">Personal Notion Dashboard</h3>
-                    <p class="text-gray-300 mt-2">A customized Notion workspace to organize my projects, social media, and creativity. Clean, intuitive, and efficient.</p>
-                    <a href="https://succulent-eucalyptus-e0f.notion.site/1df7d1a684bf80ab9ed1f559d480717a?source=copy_link" class="text-purple-400 hover:text-purple-300 mt-4 inline-block">View My Notion Page</a>
-                </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-white">Project Coming Soon</h3>
-                    <p class="text-gray-300 mt-2">Exciting projects in the works! Check back soon for updates.</p>
-                </div>
-                <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold text-white">Project Coming Soon</h3>
-                    <p class="text-gray-300 mt-2">Exciting projects in the works! Check back soon for updates.</p>
-                </div>
-            </div>
+  <!-- Portfolio Section -->
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 text-white">Portfolio/Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold text-white">Personal Notion Dashboard</h3>
+          <p class="text-gray-300 mt-2">
+            Designed a customized Notion page to organize my projects, social media links, and creative work. Featuring a clean layout with callout blocks put together in a creative way for a smooth experience.
+          </p>
+          <a href="https://succulent-eucalyptus-e0f.notion.site/1df7d1a684bf80ab9ed1f559d480717a?source=copy_link" class="text-purple-400 hover:text-purple-300 mt-4 inline-block">View My Notion Page</a>
         </div>
-    </section>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold text-white">Project Coming Soon</h3>
+          <p class="text-gray-300 mt-2">Exciting projects in the works! Check back soon for updates.</p>
+        </div>
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+          <h3 class="text-xl font-semibold text-white">Project Coming Soon</h3>
+          <p class="text-gray-300 mt-2">Exciting projects in the works! Check back soon for updates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section class="py-12">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-8 text-white">Contact Me</h2>
-            <p class="text-lg text-gray-300 mb-4">Feel free to reach out anytime!</p>
-            <p class="text-lg text-gray-300">Email: <a href="mailto:mhmmd.shadil.mp@gmail.com" class="text-purple-400 hover:text-purple-300">mhmmd.shadil.mp@gmail.com</a></p>
-            <p class="text-lg text-gray-300 mt-2">Instagram: <a href="https://www.instagram.com/mhmmd.shadil/" class="text-purple-400 hover:text-purple-300">@mhmmd.shadil</a></p>
-            <p class="text-lg text-gray-300 mt-2">LinkedIn: <span class="text-gray-400">Profile coming soon</span></p>
-        </div>
-    </section>
+  <!-- Contact Section -->
+  <section class="py-12">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-8 text-white">Contact Me</h2>
+      <p class="text-lg text-gray-300 mb-4">Feel free to reach out!</p>
+      <p class="text-lg text-gray-300">Email: <a href="mailto:mhmmd.shadil.mp@gmail.com" class="text-purple-400 hover:text-purple-300">mhmmd.shadil.mp@gmail.com</a></p>
+      <p class="text-lg text-gray-300 mt-2">Instagram: <a href="https://www.instagram.com/mhmmd.shadil/" class="text-purple-400 hover:text-purple-300">@mhmmd.shadil</a></p>
+      <p class="text-lg text-gray-300 mt-2">LinkedIn: <span class="text-gray-400">Profile coming soon</span></p>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-4">
-        <div class="container mx-auto text-center">
-            <p>© 2025 Muhammed Shadil MP. All rights reserved.</p>
-        </div>
-    </footer>
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-purple-900 to-indigo-900 text-white py-4">
+    <div class="container mx-auto text-center">
+      <p>© 2025 Muhammed Shadil MP. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>

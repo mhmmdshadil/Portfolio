@@ -3,6 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio of Muhammed Shadil MP, a 19-year-old tech enthusiast from Kerala specializing in UI/UX, AI, and web development.">
+  <meta name="keywords" content="Muhammed Shadil, UI/UX, web development, AI, Kerala, portfolio">
+  <meta property="og:title" content="Muhammed Shadil MP Portfolio">
+  <meta property="og:image" content="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg">
+  <meta property="og:description" content="Explore the portfolio of Muhammed Shadil MP, a 19-year-old tech enthusiast from Kerala.">
   <title>Muhammed Shadil MP</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -73,6 +78,13 @@
     h1, h2, h3 {
       color: #B2CD9C;
     }
+    /* Image wrapper for white background */
+    .image-wrapper {
+      background: #FFFFFF;
+      border-radius: 8px;
+      border: 1px solid #6B523F;
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
@@ -81,9 +93,10 @@
     <div class="container mx-auto text-center flex flex-col items-center">
       <img 
         src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" 
-        alt="Muhammed Shadil MP" 
+        alt="Muhammed Shadil MP profile picture" 
         class="w-40 h-40 rounded-full border-4 border-[#CA7842] mb-6 object-cover shadow-lg fade-in"
         style="animation-delay: 0.2s;"
+        loading="lazy"
       />
       <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight drop-shadow-lg fade-in">
         Muhammed Shadil MP
@@ -91,7 +104,7 @@
       <p class="mt-3 text-xl font-semibold fade-in" style="animation-delay: 0.4s;">
         19 yr old from Kerala | Crafting Tech & Aesthetics
       </p>
-      <a href="#contact" class="mt-6 inline-block px-6 py-3 text-lg font-semibold text-[#F0F2BD] rounded-full cta-button fade-in" style="animation-delay: 0.6s;">
+      <a href="#contact" aria-label="Navigate to contact section" class="mt-6 inline-block px-6 py-3 text-lg font-semibold text-[#F0F2BD] rounded-full cta-button fade-in" style="animation-delay: 0.6s;">
         Get in Touch
       </a>
     </div>
@@ -137,12 +150,16 @@
     <div class="container mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-10">Portfolio/Projects</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Project 1: Notion Dashboard -->
         <div class="portfolio-card p-6 rounded-lg shadow-lg">
-          <img 
-            src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/notion/NOTION.png" 
-            alt="Notion Dashboard Preview" 
-            class="mb-4 rounded-lg w-full h-48 object-cover border border-[#6B523F]"
-          />
+          <div class="image-wrapper mb-4">
+            <img 
+              src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/notion/NOTION.png" 
+              alt="Notion Dashboard Preview" 
+              class="rounded-lg w-full h-48 object-cover"
+              loading="lazy"
+            />
+          </div>
           <h3 class="text-xl font-semibold text-[#B2CD9C]">Personal Notion Dashboard</h3>
           <p class="text-[#F0F2BD] mt-2">
             A customized Notion page to organize projects, social media, and creative work with a clean, creative layout.
@@ -151,15 +168,40 @@
             View My Notion Page
           </a>
         </div>
+
+        <!-- Project 2: ae.slamic Instagram Page -->
         <div class="portfolio-card p-6 rounded-lg shadow-lg">
-          <div class="placeholder-img mb-4">Coming Soon</div>
-          <h3 class="text-xl font-semibold text-[#B2CD9C]">AI-Powered App</h3>
-          <p class="text-[#F0F2BD] mt-2">Working on an AI-driven project to streamline tasks. Stay tuned for updates!</p>
+          <div class="image-wrapper mb-4">
+            <img 
+              src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/ae.slamic/Untitled%20design.png" 
+              alt="ae.slamic Instagram Page Preview" 
+              class="rounded-lg w-full h-48 object-cover"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-[#B2CD9C]">ae.slamic Instagram</h3>
+          <p class="text-[#F0F2BD] mt-2">
+            My Islam-based Instagram page with inspiring reels and authentic Islamic content to strengthen Imaan.
+          </p>
+          <a href="https://www.instagram.com/ae.slamic/" class="text-[#CA7842] mt-4 inline-block font-semibold" rel="nofollow">
+            Visit ae.slamic
+          </a>
         </div>
+
+        <!-- Project 3: Mystery Project -->
         <div class="portfolio-card p-6 rounded-lg shadow-lg">
-          <div class="placeholder-img mb-4">Coming Soon</div>
-          <h3 class="text-xl font-semibold text-[#B2CD9C]">Creative Web Design</h3>
-          <p class="text-[#F0F2BD] mt-2">Designing a sleek, modern website with custom animations. Check back soon!</p>
+          <div class="image-wrapper mb-4">
+            <img 
+              src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/mystery/mystery.png" 
+              alt="Mystery Project Preview" 
+              class="rounded-lg w-full h-48 object-cover"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="text-xl font-semibold text-[#B2CD9C]">Mystery Project</h3>
+          <p class="text-[#F0F2BD] mt-2">
+            A secret venture blending tech and creativity. Unveiling soon, stay curious!
+          </p>
         </div>
       </div>
     </div>

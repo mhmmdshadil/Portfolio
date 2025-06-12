@@ -10,23 +10,21 @@
   <meta property="og:description" content="Explore the portfolio of Muhammed Shadil MP, a 19-year-old tech enthusiast from Kerala.">
   <title>Muhammed Shadil MP</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(to bottom, #4B352A, #3A271F);
-      color: #F0F2BD;
-      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #2E1A12, #1F100B);
+      color: #EDEAE5;
+      font-family: 'Poppins', sans-serif;
       overflow-x: hidden;
     }
-    /* Smooth scroll behavior */
     html {
       scroll-behavior: smooth;
     }
-    /* Fade-in animation for sections */
     .fade-in {
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 0.8s ease-out forwards;
+      transform: translateY(30px);
+      animation: fadeIn 1s ease-out forwards;
     }
     @keyframes fadeIn {
       to {
@@ -34,172 +32,267 @@
         transform: translateY(0);
       }
     }
-    /* Hover effect for portfolio cards */
     .portfolio-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: #3A271F;
-      border: 1px solid #5A4335;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      background: #26150F;
+      border: 1px solid #4A2F22;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
     }
     .portfolio-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(202, 120, 66, 0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(202, 120, 66, 0.3);
     }
-    /* Custom button styling */
+    .portfolio-card::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(
+        to bottom right,
+        transparent,
+        rgba(217, 140, 79, 0.3),
+        transparent
+      );
+      transform: rotate(45deg);
+      animation: shine 4s ease-in-out infinite;
+    }
+    @keyframes shine {
+      0% {
+        transform: translate(-100%, -100%) rotate(45deg);
+      }
+      100% {
+        transform: translate(100%, 100%) rotate(45deg);
+      }
+    }
     .cta-button {
-      background: linear-gradient(to right, #CA7842, #A86235);
-      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      background: linear-gradient(45deg, #D98C4F, #B66A3A);
+      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+      border-radius: 50px;
+      padding: 12px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(
+        to bottom right,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transform: rotate(45deg);
+      animation: shine 3s ease-in-out infinite;
     }
     .cta-button:hover {
-      background: linear-gradient(to right, #A86235, #CA7842);
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(202, 120, 66, 0.3);
+      background: linear-gradient(45deg, #B66A3A, #D98C4F);
+      transform: scale(1.08);
+      box-shadow: 0 6px 16px rgba(202, 120, 66, 0.4);
     }
-    /* Placeholder image styling */
     .placeholder-img {
       background: #FFFFFF;
       color: #000000;
-      border-radius: 8px;
-      height: 200px;
+      border-radius: 12px;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 600;
-      font-size: 1.2rem;
-      border: 1px solid #6B523F;
+      font-size: 1.3rem;
+      border: 1px solid #5A3A2A;
     }
-    /* Link hover effects */
     a {
-      transition: color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
     a:hover {
-      color: #CA7842;
+      color: #D98C4F;
+      transform: translateX(4px);
     }
-    /* Heading styles */
     h1, h2, h3 {
-      color: #B2CD9C;
+      color: #C4D9A8;
+      font-family: 'Cormorant Garamond', serif;
     }
-    /* Image wrapper for white background */
     .image-wrapper {
       background: #FFFFFF;
-      border-radius: 8px;
-      border: 1px solid #6B523F;
+      border-radius: 12px;
+      border: 1px solid #5A3A2A;
       overflow: hidden;
+      transition: transform 0.4s ease;
+    }
+    .image-wrapper:hover {
+      transform: scale(1.02);
+    }
+    .header-bg {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .header-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(46, 26, 18, 0.8), rgba(31, 16, 11, 0.9));
+      z-index: -1;
+    }
+    .header-bg::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #D98C4F, #B66A3A, #4A2F22, #26150F);
+      opacity: 0.2;
+      animation: gradientShift 15s ease-in-out infinite;
+      z-index: -2;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .section-divider {
+      width: 80px;
+      height: 3px;
+      background: #D98C4F;
+      margin: 0 auto 20px;
+    }
+    .glass-effect {
+      background: rgba(38, 21, 15, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(202, 120, 66, 0.2);
+      border-radius: 16px;
     }
   </style>
 </head>
 <body>
   <!-- Header Section -->
-  <header class="bg-gradient-to-r from-[#4B352A] to-[#3A271F] py-16 mb-12 shadow-lg">
+  <header class="header-bg py-20 mb-16 shadow-2xl">
     <div class="container mx-auto text-center flex flex-col items-center">
-      <img 
-        src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" 
-        alt="Muhammed Shadil MP profile picture" 
-        class="w-40 h-40 rounded-full border-4 border-[#CA7842] mb-6 object-cover shadow-lg fade-in"
-        style="animation-delay: 0.2s;"
-        loading="lazy"
-      />
-      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight drop-shadow-lg fade-in">
+      <div class="image-wrapper w-mack48 h-48 rounded-full border-4 border-[#D98C4F] mb-8 shadow-xl fade-in" style="animation-delay: 0.2s;">
+        <img 
+          src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" 
+          alt="Muhammed Shadil MP profile picture" 
+          class="w-full h-full rounded-full object-cover"
+          loading="lazy"
+        />
+      </div>
+      <h1 class="text-6xl md:text-7xl font-extrabold tracking-tight drop-shadow-2xl fade-in">
         Muhammed Shadil MP
       </h1>
-      <p class="mt-3 text-xl font-semibold fade-in" style="animation-delay: 0.4s;">
+      <p class="mt-4 text-xl font-semibold fade-in" style="animation-delay: 0.4s;">
         19 yr old from Kerala | Crafting Tech & Aesthetics
       </p>
-      <a href="#contact" aria-label="Navigate to contact section" class="mt-6 inline-block px-6 py-3 text-lg font-semibold text-[#F0F2BD] rounded-full cta-button fade-in" style="animation-delay: 0.6s;">
+      <a href="#contact" aria-label="Navigate to contact section" class="mt-8 inline-block px-8 py-4 text-xl font-semibold text-[#EDEAE5] cta-button fade-in" style="animation-delay: 0.6s;">
         Get in Touch
       </a>
     </div>
   </header>
 
   <!-- About Section -->
-  <section class="py-16 fade-in" style="animation-delay: 0.2s;">
+  <section class="py-20 fade-in" style="animation-delay: 0.2s;">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-10">About Me</h2>
-      <p class="text-lg max-w-3xl mx-auto leading-relaxed">
+      <h2 class="text-5xl font-bold text-center mb-6">About Me</h2>
+      <div class="section-divider"></div>
+      <div class="glass-effect p-8 max-w-3xl mx-auto leading-relaxed text-lg">
         I'm a 19-year-old tech enthusiast from Kerala, passionate about blending creativity with technology. I specialize in crafting aesthetic, user-friendly designs and leveraging AI to streamline workflows. My goal is to create impactful digital experiences that are simple, innovative, and effective.
-      </p>
+      </div>
     </div>
   </section>
 
-  <!-- Skills Section (Inspired by Ollivere's Train Metaphor) -->
-  <section class="py-16 bg-[#3A271F] fade-in" style="animation-delay: 0.4s;">
+  <!-- Skills Section -->
+  <section class="py-20 bg-[#26150F] fade-in" style="animation-delay: 0.4s;">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-10">What I Do</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="portfolio-card p-6 rounded-lg shadow-lg text-center">
-          <h3 class="text-xl font-semibold text-[#CA7842]">UI/UX Design</h3>
-          <p class="text-[#F0F2BD] mt-2">Designing intuitive and visually appealing interfaces.</p>
+      <h2 class="text-5xl font-bold text-center mb-6">What I Do</h2>
+      <div class="section-divider"></div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="portfolio-card p-8 rounded-xl shadow-xl text-center glass-effect">
+          <h3 class="text-2xl font-semibold text-[#D98C4F]">UI/UX Design</h3>
+          <p class="text-[#EDEAE5] mt-3">Designing intuitive and visually appealing interfaces.</p>
         </div>
-        <div class="portfolio-card p-6 rounded-lg shadow-lg text-center">
-          <h3 class="text-xl font-semibold text-[#CA7842]">AI Integration</h3>
-          <p class="text-[#F0F2BD] mt-2">Using AI to optimize workflows and enhance projects.</p>
+        <div class="portfolio-card p-8 rounded-xl shadow-xl text-center glass-effect">
+          <h3 class="text-2xl font-semibold text-[#D98C4F]">AI Integration</h3>
+          <p class="text-[#EDEAE5] mt-3">Using AI to optimize workflows and enhance projects.</p>
         </div>
-        <div class="portfolio-card p-6 rounded-lg shadow-lg text-center">
-          <h3 class="text-xl font-semibold text-[#CA7842]">Web Development</h3>
-          <p class="text-[#F0F2BD] mt-2">Building responsive, modern websites with Webflow and more.</p>
+        <div class="portfolio-card p-8 rounded-xl shadow-xl text-center glass-effect">
+          <h3 class="text-2xl font-semibold text-[#D98C4F]">Web Development</h3>
+          <p class="text-[#EDEAE5] mt-3">Building responsive, modern websites with Webflow and more.</p>
         </div>
-        <div class="portfolio-card p-6 rounded-lg shadow-lg text-center">
-          <h3 class="text-xl font-semibold text-[#CA7842]">Creative Direction</h3>
-          <p class="text-[#F0F2BD] mt-2">Crafting unique aesthetics for standout projects.</p>
+        <div class="portfolio-card p-8 rounded-xl shadow-xl text-center glass-effect">
+          <h3 class="text-2xl font-semibold text-[#D98C4F]">Creative Direction</h3>
+          <p class="text-[#EDEAE5] mt-3">Crafting unique aesthetics for standout projects.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Portfolio Section -->
-  <section class="py-16 fade-in" style="animation-delay: 0.6s;">
+  <section class="py-20 fade-in" style="animation-delay: 0.6s;">
     <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold text-center mb-10">Portfolio/Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <h2 class="text-5xl font-bold text-center mb-6">Portfolio/Projects</h2>
+      <div class="section-divider"></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
         <!-- Project 1: Notion Dashboard -->
-        <div class="portfolio-card p-6 rounded-lg shadow-lg">
-          <div class="image-wrapper mb-4">
+        <div class="portfolio-card p-8 rounded-xl shadow-xl glass-effect">
+          <div class="image-wrapper mb-6">
             <img 
               src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/notion/NOTION.png" 
               alt="Notion Dashboard Preview" 
-              class="rounded-lg w-full h-48 object-cover"
+              class="rounded-xl w-full h-56 object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-xl font-semibold text-[#B2CD9C]">Personal Notion Dashboard</h3>
-          <p class="text-[#F0F2BD] mt-2">
+          <h3 class="text-2xl font-semibold text-[#C4D9A8]">Personal Notion Dashboard</h3>
+          <p class="text-[#EDEAE5] mt-3">
             A customized Notion page to organize projects, social media, and creative work with a clean, creative layout.
           </p>
-          <a href="https://succulent-eucalyptus-e0f.notion.site/1df7d1a684bf80ab9ed1f559d480717a?source=copy_link" class="text-[#CA7842] mt-4 inline-block font-semibold">
+          <a href="https://succulent-eucalyptus-e0f.notion.site/1df7d1a684bf80ab9ed1f559d480717a?source=copy_link" class="text-[#D98C4F] mt-4 inline-block font-semibold">
             View My Notion Page
           </a>
         </div>
 
         <!-- Project 2: ae.slamic Instagram Page -->
-        <div class="portfolio-card p-6 rounded-lg shadow-lg">
-          <div class="image-wrapper mb-4">
+        <div class="portfolio-card p-8 rounded-xl shadow-xl glass-effect">
+          <div class="image-wrapper mb-6">
             <img 
               src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/ae.slamic/Untitled%20design.png" 
               alt="ae.slamic Instagram Page Preview" 
-              class="rounded-lg w-full h-48 object-cover"
+              class="rounded-xl w-full h-56 object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-xl font-semibold text-[#B2CD9C]">ae.slamic Instagram</h3>
-          <p class="text-[#F0F2BD] mt-2">
+          <h3 class="text-2xl font-semibold text-[#C4D9A8]">ae.slamic Instagram</h3>
+          <p class="text-[#EDEAE5] mt-3">
             My Islam-based Instagram page with inspiring reels and authentic Islamic content to strengthen Imaan.
           </p>
-          <a href="https://www.instagram.com/ae.slamic/" class="text-[#CA7842] mt-4 inline-block font-semibold" rel="nofollow">
+          <a href="https://www.instagram.com/ae.slamic/" class="text-[#D98C4F] mt-4 inline-block font-semibold" rel="nofollow">
             Visit ae.slamic
           </a>
         </div>
 
         <!-- Project 3: Mystery Project -->
-        <div class="portfolio-card p-6 rounded-lg shadow-lg">
-          <div class="image-wrapper mb-4">
+        <div class="portfolio-card p-8 rounded-xl shadow-xl glass-effect">
+          <div class="image-wrapper mb-6">
             <img 
               src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/mystery/mystery.png" 
               alt="Mystery Project Preview" 
-              class="rounded-lg w-full h-48 object-cover"
+              class="rounded-xl w-full h-56 object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-xl font-semibold text-[#B2CD9C]">Mystery Project</h3>
-          <p class="text-[#F0F2BD] mt-2">
+          <h3 class="text-2xl font-semibold text-[#C4D9A8]">Mystery Project</h3>
+          <p class="text-[#EDEAE5] mt-3">
             A secret venture blending tech and creativity. Unveiling soon, stay curious!
           </p>
         </div>
@@ -208,21 +301,22 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-16 fade-in" style="animation-delay: 0.8s;">
+  <section id="contact" class="py-20 fade-in" style="animation-delay: 0.8s;">
     <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-10">Contact Me</h2>
-      <p class="text-lg mb-6">Let's create something amazing together!</p>
-      <div class="flex flex-col items-center space-y-4">
+      <h2 class="text-5xl font-bold mb-6">Contact Me</h2>
+      <div class="section-divider"></div>
+      <p class="text-lg mb-8">Let's create something amazing together!</p>
+      <div class="flex flex-col items-center space-y-6 glass-effect p-8 rounded-xl max-w-lg mx-auto">
         <p class="text-lg">
-          Email: <a href="mailto:mhmmd.shadil.mp@gmail.com" class="text-[#CA7842]">mhmmd.shadil.mp@gmail.com</a>
+          Email: <a href="mailto:mhmmd.shadil.mp@gmail.com" class="text-[#D98C4F]">mhmmd.shadil.mp@gmail.com</a>
         </p>
         <p class="text-lg">
-          Instagram: <a href="https://www.instagram.com/mhmmd.shadil/" class="text-[#CA7842]">@mhmmd.shadil</a>
+          Instagram: <a href="https://www.instagram.com/mhmmd.shadil/" class="text-[#D98C4F]">@mhmmd.shadil</a>
         </p>
         <p class="text-lg">
-          LinkedIn: <a href="#" class="text-[#CA7842]">Profile coming soon</a>
+          LinkedIn: <a href="#" class="text-[#D98C4F]">Profile coming soon</a>
         </p>
-        <a href="mailto:mhmmd.shadil.mp@gmail.com" class="inline-block px-6 py-3 text-lg font-semibold text-[#F0F2BD] rounded-full cta-button">
+        <a href="mailto:mhmmd.shadil.mp@gmail.com" class="inline-block px-8 py-4 text-xl font-semibold text-[#EDEAE5] cta-button">
           Send a Message
         </a>
       </div>
@@ -230,7 +324,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gradient-to-r from-[#4B352A] to-[#3A271F] text-[#F0F2BD] py-6">
+  <footer class="bg-gradient-to-r from-[#2E1A12] to-[#1F100B] text-[#EDEAE5] py-8">
     <div class="container mx-auto text-center">
       <p>© 2025 Muhammed Shadil MP. All rights reserved.</p>
     </div>
@@ -246,7 +340,7 @@
             entry.target.style.animationPlayState = 'running';
           }
         });
-      }, { threshold: 0.2 });
+      }, { threshold: 0.1 });
       elements.forEach(element => observer.observe(element));
     });
   </script>

@@ -199,6 +199,12 @@
   </style>
 </head>
 <body>
+  <!-- Background Audio -->
+  <audio id="background-music" loop muted>
+    <source src="https://example.com/path-to-your-audio-file.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
   <!-- Header Section -->
   <header class="header-bg py-16 md:py-24 shadow-2xl">
     <div class="container mx-auto text-center flex flex-col items-center px-6">
@@ -238,7 +244,7 @@
 
   <!-- Skills Section -->
   <section class="py-24 bg-[#1F0C07] fade-in" style="animation-delay: 0.5s;">
-    <div class="container mx-auto">
+    <div class="container mx-auto px-6">
       <h2 class="text-5xl md:text-6xl font-bold text-center mb-8 font-['Playfair_Display']">What I Do</h2>
       <div class="section-divider"></div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -384,6 +390,19 @@
         const scrollPosition = window.scrollY;
         header.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
       });
+
+      // Background music control
+      const audio = document.getElementById('background-music');
+      // Unmute and play audio on first user interaction
+      const playAudio = () => {
+        audio.muted = false;
+        audio.play().catch(err => console.log('Audio play failed:', err));
+        // Remove event listeners after first interaction
+        document.removeEventListener('click', playAudio);
+        document.removeEventListener('touchstart', playAudio);
+      };
+      document.addEventListener('click', playAudio);
+      document.addEventListener('touchstart', playAudio);
     });
   </script>
 </body>

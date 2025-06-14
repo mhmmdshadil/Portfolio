@@ -10,21 +10,22 @@
   <meta property="og:description" content="Explore the portfolio of Muhammed Shadil MP, a 19-year-old tech enthusiast from Kerala.">
   <title>Muhammed Shadil MP</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: linear-gradient(to bottom, #2E1A12, #1F100B);
-      color: #EDEAE5;
-      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(180deg, #1A0B06 0%, #0F0704 100%);
+      color: #F5F5F5;
+      font-family: 'Inter', sans-serif;
       overflow-x: hidden;
+      margin: 0;
     }
     html {
       scroll-behavior: smooth;
     }
     .fade-in {
       opacity: 0;
-      transform: translateY(30px);
-      animation: fadeIn 1s ease-out forwards;
+      transform: translateY(40px);
+      animation: fadeIn 1.2s ease-out forwards;
     }
     @keyframes fadeIn {
       to {
@@ -33,16 +34,16 @@
       }
     }
     .portfolio-card {
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
-      background: #26150F;
-      border: 1px solid #4A2F22;
-      border-radius: 12px;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      background: #1F0C07;
+      border: 1px solid #5A2F1A;
+      border-radius: 16px;
       position: relative;
       overflow: hidden;
     }
     .portfolio-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(202, 120, 66, 0.3);
+      transform: translateY(-12px);
+      box-shadow: 0 16px 32px rgba(255, 153, 102, 0.4);
     }
     .portfolio-card::before {
       content: '';
@@ -52,29 +53,31 @@
       width: 300%;
       height: 300%;
       background: linear-gradient(
-        to bottom right,
+        45deg,
         transparent,
-        rgba(217, 140, 79, 0.3),
+        rgba(255, 153, 102, 0.3),
         transparent
       );
       transform: rotate(45deg);
-      animation: shine 4s ease-in-out infinite;
+      animation: shine 6s ease-in-out infinite;
     }
     @keyframes shine {
-      0% {
-        transform: translate(-100%, -100%) rotate(45deg);
-      }
-      100% {
-        transform: translate(100%, 100%) rotate(45deg);
-      }
+      0% { transform: translate(-100%, -100%) rotate(45deg); }
+      100% { transform: translate(100%, 100%) rotate(45deg); }
     }
     .cta-button {
-      background: linear-gradient(45deg, #D98C4F, #B66A3A);
-      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+      background: linear-gradient(45deg, #FF9966, #FF6B3D);
+      transition: all 0.4s ease;
       border-radius: 50px;
-      padding: 12px 24px;
+      padding: 14px 28px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(255, 153, 102, 0.3);
+    }
+    .cta-button:hover {
+      background: linear-gradient(45deg, #FF6B3D, #FF9966);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(255, 153, 102, 0.5);
     }
     .cta-button::before {
       content: '';
@@ -84,56 +87,34 @@
       width: 300%;
       height: 300%;
       background: linear-gradient(
-        to bottom right,
+        45deg,
         transparent,
-        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.2),
         transparent
       );
       transform: rotate(45deg);
-      animation: shine 3s ease-in-out infinite;
-    }
-    .cta-button:hover {
-      background: linear-gradient(45deg, #B66A3A, #D98C4F);
-      transform: scale(1.08);
-      box-shadow: 0 6px 16px rgba(202, 120, 66, 0.4);
-    }
-    .placeholder-img {
-      background: #FFFFFF;
-      color: #000000;
-      border-radius: 12px;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 1.3rem;
-      border: 1px solid #5A3A2A;
-    }
-    a {
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-    a:hover {
-      color: #D98C4F;
-      transform: translateX(4px);
-    }
-    h1, h2, h3 {
-      color: #C4D9A8;
-      font-family: 'Cormorant Garamond', serif;
+      animation: shine 4s ease-in-out infinite;
     }
     .image-wrapper {
       background: #FFFFFF;
       border-radius: 12px;
-      border: 1px solid #5A3A2A;
+      border: 1px solid #5A2F1A;
       overflow: hidden;
-      transition: transform 0.4s ease;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
     .image-wrapper:hover {
-      transform: scale(1.02);
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(255, 153, 102, 0.3);
     }
     .header-bg {
       position: relative;
       z-index: 1;
       overflow: hidden;
+      background: url('https://source.unsplash.com/random/1920x1080/?tech') no-repeat center;
+      background-size: cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
     }
     .header-bg::before {
       content: '';
@@ -142,7 +123,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(46, 26, 18, 0.8), rgba(31, 16, 11, 0.9));
+      background: linear-gradient(180deg, rgba(26, 11, 6, 0.8), rgba(15, 7, 4, 0.9));
       z-index: -1;
     }
     .header-bg::after {
@@ -152,9 +133,9 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, #D98C4F, #B66A3A, #4A2F22, #26150F);
-      opacity: 0.2;
-      animation: gradientShift 15s ease-in-out infinite;
+      background: linear-gradient(45deg, #FF9966, #FF6B3D, #5A2F1A, #1F0C07);
+      opacity: 0.3;
+      animation: gradientShift 20s ease-in-out infinite;
       z-index: -2;
     }
     @keyframes gradientShift {
@@ -163,61 +144,72 @@
       100% { background-position: 0% 50%; }
     }
     .section-divider {
-      width: 80px;
-      height: 3px;
-      background: #D98C4F;
-      margin: 0 auto 20px;
+      width: 100px;
+      height: 4px;
+      background: #FF9966;
+      margin: 0 auto 24px;
+      border-radius: 2px;
     }
     .glass-effect {
-      background: rgba(38, 21, 15, 0.3);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(202, 120, 66, 0.2);
-      border-radius: 16px;
+      background: rgba(31, 12, 7, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 153, 102, 0.3);
+      border-radius: 20px;
+      transition: all 0.4s ease;
+    }
+    .glass-effect:hover {
+      background: rgba(31, 12, 7, 0.5);
+      box-shadow: 0 8px 24px rgba(255, 153, 102, 0.2);
     }
     .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 1.5rem;
       opacity: 1;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s ease;
     }
     .scroll-indicator.hidden {
       opacity: 0;
       pointer-events: none;
     }
     .scroll-text {
-      color: #EDEAE5;
-      font-size: 1rem;
+      color: #F5F5F5;
+      font-size: 1.1rem;
       font-weight: 500;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
     }
     .scroll-arrow {
-      width: 24px;
-      height: 24px;
-      border-right: 2px solid #D98C4F;
-      border-bottom: 2px solid #D98C4F;
+      width: 28px;
+      height: 28px;
+      border-right: 3px solid #FF9966;
+      border-bottom: 3px solid #FF9966;
       transform: rotate(45deg);
-      animation: bounce 2s infinite;
+      animation: bounce 2.5s infinite;
     }
     @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0) rotate(45deg);
-      }
-      40% {
-        transform: translateY(10px) rotate(45deg);
-      }
-      60% {
-        transform: translateY(5px) rotate(45deg);
-      }
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0) rotate(45deg); }
+      40% { transform: translateY(12px) rotate(45deg); }
+      60% { transform: translateY(6px) rotate(45deg); }
+    }
+    .highlight-text {
+      background: linear-gradient(90deg, #FF9966, #FF6B3D);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
     }
   </style>
 </head>
 <body>
   <!-- Header Section -->
-  <header class="header-bg py-20 mb-16 shadow-2xl">
-    <div class="container mx-auto text-center flex flex-col items-center">
-      <div class="image-wrapper w-48 h-48 rounded-full border-4 border-[#D98C4F] mb-8 shadow-xl fade-in" style="animation-delay: 0.2s;">
+  <header class="header-bg py-16 md:py-24 shadow-2xl">
+    <div class="container mx-auto text-center flex flex-col items-center px-6">
+      <div class="image-wrapper w-56 h-56 md:w-64 md:h-64 rounded-full border-4 border-[#FF9966] mb-10 shadow-2xl fade-in" style="animation-delay: 0.3s;">
         <img 
           src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" 
           alt="Muhammed Shadil MP profile picture" 
@@ -225,16 +217,16 @@
           loading="lazy"
         />
       </div>
-      <h1 class="text-6xl md:text-7xl font-extrabold tracking-tight drop-shadow-2xl fade-in">
-        Muhammed Shadil MP
+      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight drop-shadow-2xl fade-in" style="animation-delay: 0.5s;">
+        <span class="highlight-text">Muhammed Shadil MP</span>
       </h1>
-      <p class="mt-4 text-xl font-semibold fade-in" style="animation-delay: 0.4s;">
+      <p class="mt-6 text-xl md:text-2xl font-semibold fade-in" style="animation-delay: 0.7s;">
         19 yr old from Kerala | Crafting Tech & Aesthetics
       </p>
-      <a href="#contact" aria-label="Navigate to contact section" class="mt-8 inline-block px-8 py-4 text-xl font-semibold text-[#EDEAE5] cta-button fade-in" style="animation-delay: 0.6s;">
+      <a href="#contact" aria-label="Navigate to contact section" class="mt-10 inline-block px-10 py-5 text-xl font-semibold text-[#F5F5F5] cta-button fade-in" style="animation-delay: 0.9s;">
         Get in Touch
       </a>
-      <div class="scroll-indicator fade-in" style="animation-delay: 0.8s;">
+      <div class="scroll-indicator fade-in" style="animation-delay: 1.1s;">
         <span class="scroll-text">Scroll Down for More</span>
         <div class="scroll-arrow"></div>
       </div>
@@ -242,98 +234,98 @@
   </header>
 
   <!-- About Section -->
-  <section class="py-20 fade-in" style="animation-delay: 0.2s;">
+  <section class="py-24 fade-in" style="animation-delay: 0.3s;">
     <div class="container mx-auto px-6">
-      <h2 class="text-5xl font-bold text-center mb-6">About Me</h2>
+      <h2 class="text-5xl md:text-6xl font-bold text-center mb-8 font-['Playfair_Display']">About Me</h2>
       <div class="section-divider"></div>
-      <div class="glass-effect p-8 max-w-3xl mx-auto leading-relaxed text-lg">
+      <div class="glass-effect p-10 max-w-4xl mx-auto leading-relaxed text-lg md:text-xl">
         I'm a 19-year-old tech enthusiast from Kerala, passionate about blending creativity with technology. I specialize in crafting aesthetic, user-friendly designs and leveraging AI to streamline workflows. My goal is to create impactful digital experiences that are simple, innovative, and effective.
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section class="py-20 bg-[#26150F] fade-in" style="animation-delay: 0.4s;">
+  <section class="py-24 bg-[#1F0C07] fade-in" style="animation-delay: 0.5s;">
     <div class="container mx-auto px-6">
-      <h2 class="text-5xl font-bold text-center mb-6">What I Do</h2>
+      <h2 class="text-5xl md:text-6xl font-bold text-center mb-8 font-['Playfair_Display']">What I Do</h2>
       <div class="section-divider"></div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div class="portfolio-card p-8 rounded-xl shadow-xl text-center glass-effect">
-          <h3 class="text-2xl font-semibold text-[#D98C4F]">UI/UX Design</h3>
-          <p class="text-[#EDEAE5] mt-3">Designing intuitive and visually appealing interfaces.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div class="portfolio-card p-10 rounded-xl shadow-xl text-center glass-effect">
+          <h3 class="text-2xl font-semibold text-[#FF9966] mb-4">UI/UX Design</h3>
+          <p class="text-[#F5F5F5]">Designing intuitive and visually appealing interfaces.</p>
         </div>
-        <div class="portfolio-card p-8 rounded-xl shadow-xl text-center glass-effect">
-          <h3 class="text-2xl font-semibold text-[#D98C4F]">AI Integration</h3>
-          <p class="text-[#EDEAE5] mt-3">Using AI to optimize workflows and enhance projects.</p>
+        <div class="portfolio-card p-10 rounded-xl shadow-xl text-center glass-effect">
+          <h3 class="text-2xl font-semibold text-[#FF9966] mb-4">AI Integration</h3>
+          <p class="text-[#F5F5F5]">Using AI to optimize workflows and enhance projects.</p>
         </div>
-        <div class="portfolio-card p-8 rounded-xl shadow-xl text-center glass-effect">
-          <h3 class="text-2xl font-semibold text-[#D98C4F]">Web Development</h3>
-          <p class="text-[#EDEAE5] mt-3">Building responsive, modern websites with Webflow and more.</p>
+        <div class="portfolio-card p-10 rounded-xl shadow-xl text-center glass-effect">
+          <h3 class="text-2xl font-semibold text-[#FF9966] mb-4">Web Development</h3>
+          <p class="text-[#F5F5F5]">Building responsive, modern websites with Webflow and more.</p>
         </div>
-        <div class="portfolio-card p-8 rounded-xl shadow-xl text-center glass-effect">
-          <h3 class="text-2xl font-semibold text-[#D98C4F]">Creative Direction</h3>
-          <p class="text-[#EDEAE5] mt-3">Crafting unique aesthetics for standout projects.</p>
+        <div class="portfolio-card p-10 rounded-xl shadow-xl text-center glass-effect">
+          <h3 class="text-2xl font-semibold text-[#FF9966] mb-4">Creative Direction</h3>
+          <p class="text-[#F5F5F5]">Crafting unique aesthetics for standout projects.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Portfolio Section -->
-  <section class="py-20 fade-in" style="animation-delay: 0.6s;">
+  <section class="py-24 fade-in" style="animation-delay: 0.7s;">
     <div class="container mx-auto px-6">
-      <h2 class="text-5xl font-bold text-center mb-6">Portfolio/Projects</h2>
+      <h2 class="text-5xl md:text-6xl font-bold text-center mb-8 font-['Playfair_Display']">Portfolio/Projects</h2>
       <div class="section-divider"></div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
         <!-- Project 1: Notion Dashboard -->
-        <div class="portfolio-card p-8 rounded-xl shadow-xl glass-effect">
+        <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
           <div class="image-wrapper mb-6">
             <img 
               src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/notion/NOTION.png" 
               alt="Notion Dashboard Preview" 
-              class="rounded-xl w-full h-56 object-cover"
+              class="rounded-xl w-full h-60 object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-2xl font-semibold text-[#C4D9A8]">Personal Notion Dashboard</h3>
-          <p class="text-[#EDEAE5] mt-3">
+          <h3 class="text-2xl font-semibold text-[#FF9966] mb-4">Personal Notion Dashboard</h3>
+          <p class="text-[#F5F5F5] mb-4">
             A customized Notion page to organize projects, social media, and creative work with a clean, creative layout.
           </p>
-          <a href="https://succulent-eucalyptus-e0f.notion.site/1df7d1a684bf80ab9ed1f559d480717a?source=copy_link" class="text-[#D98C4F] mt-4 inline-block font-semibold">
+          <a href="https://succulent-eucalyptus-e0f.notion.site/1df7d1a684bf80ab9ed1f559d480717a?source=copy_link" class="text-[#FF9966] font-semibold inline-block hover:text-[#FF6B3D] transition-colors">
             View My Notion Page
           </a>
         </div>
 
         <!-- Project 2: ae.slamic Instagram Page -->
-        <div class="portfolio-card p-8 rounded-xl shadow-xl glass-effect">
+        <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
           <div class="image-wrapper mb-6">
             <img 
               src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/ae.slamic/Untitled%20design.png" 
               alt="ae.slamic Instagram Page Preview" 
-              class="rounded-xl w-full h-56 object-cover"
+              class="rounded-xl w-full h-60 object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-2xl font-semibold text-[#C4D9A8]">ae.slamic Instagram</h3>
-          <p class="text-[#EDEAE5] mt-3">
+          <h3 class="text-2xl font-semibold text-[#FF9966] mb-4">ae.slamic Instagram</h3>
+          <p class="text-[#F5F5F5] mb-4">
             My Islam-based Instagram page with inspiring reels and authentic Islamic content to strengthen Imaan.
           </p>
-          <a href="https://www.instagram.com/ae.slamic/" class="text-[#D98C4F] mt-4 inline-block font-semibold" rel="nofollow">
+          <a href="https://www.instagram.com/ae.slamic/" class="text-[#FF9966] font-semibold inline-block hover:text-[#FF6B3D] transition-colors" rel="nofollow">
             Visit ae.slamic
           </a>
         </div>
 
         <!-- Project 3: Mystery Project -->
-        <div class="portfolio-card p-8 rounded-xl shadow-xl glass-effect">
+        <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
           <div class="image-wrapper mb-6">
             <img 
               src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/mystery/mystery.png" 
               alt="Mystery Project Preview" 
-              class="rounded-xl w-full h-56 object-cover"
+              class="rounded-xl w-full h-60 object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-2xl font-semibold text-[#C4D9A8]">Mystery Project</h3>
-          <p class="text-[#EDEAE5] mt-3">
+          <h3 class="text-2xl font-semibold text-[#FF9966] mb-4">Mystery Project</h3>
+          <p class="text-[#F5F5F5] mb-4">
             A secret venture blending tech and creativity. Unveiling soon, stay curious!
           </p>
         </div>
@@ -342,22 +334,22 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 fade-in" style="animation-delay: 0.8s;">
+  <section id="contact" class="py-24 fade-in" style="animation-delay: 0.9s;">
     <div class="container mx-auto px-6 text-center">
-      <h2 class="text-5xl font-bold mb-6">Contact Me</h2>
+      <h2 class="text-5xl md:text-6xl font-bold mb-8 font-['Playfair_Display']">Contact Me</h2>
       <div class="section-divider"></div>
-      <p class="text-lg mb-8">Let's create something amazing together!</p>
-      <div class="flex flex-col items-center space-y-6 glass-effect p-8 rounded-xl max-w-lg mx-auto">
+      <p class="text-xl mb-10">Let's create something amazing together!</p>
+      <div class="flex flex-col items-center space-y-8 glass-effect p-10 rounded-xl max-w-lg mx-auto">
         <p class="text-lg">
-          Email: <a href="mailto:mhmmd.shadil.mp@gmail.com" class="text-[#D98C4F]">mhmmd.shadil.mp@gmail.com</a>
+          Email: <a href="mailto:mhmmd.shadil.mp@gmail.com" class="text-[#FF9966] hover:text-[#FF6B3D] transition-colors">mhmmd.shadil.mp@gmail.com</a>
         </p>
         <p class="text-lg">
-          Instagram: <a href="https://www.instagram.com/mhmmd.shadil/" class="text-[#D98C4F]">@mhmmd.shadil</a>
+          Instagram: <a href="https://www.instagram.com/mhmmd.shadil/" class="text-[#FF9966] hover:text-[#FF6B3D] transition-colors">@mhmmd.shadil</a>
         </p>
         <p class="text-lg">
-          LinkedIn: <a href="#" class="text-[#D98C4F]">Profile coming soon</a>
+          LinkedIn: <a href="#" class="text-[#FF9966] hover:text-[#FF6B3D] transition-colors">Profile coming soon</a>
         </p>
-        <a href="mailto:mhmmd.shadil.mp@gmail.com" class="inline-block px-8 py-4 text-xl font-semibold text-[#EDEAE5] cta-button">
+        <a href="mailto:mhmmd.shadil.mp@gmail.com" class="inline-block px-10 py-5 text-xl font-semibold text-[#F5F5F5] cta-button">
           Send a Message
         </a>
       </div>
@@ -365,14 +357,14 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gradient-to-r from-[#2E1A12] to-[#1F100B] text-[#EDEAE5] py-8">
+  <footer class="bg-gradient-to-r from-[#1A0B06] to-[#0F0704] text-[#F5F5F5] py-10">
     <div class="container mx-auto text-center">
       <p>© 2025 Muhammed Shadil MP. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
-    // Add fade-in effect on scroll
+    // Enhanced scroll and animation effects
     document.addEventListener('DOMContentLoaded', () => {
       const elements = document.querySelectorAll('.fade-in');
       const observer = new IntersectionObserver((entries) => {
@@ -381,17 +373,24 @@
             entry.target.style.animationPlayState = 'running';
           }
         });
-      }, { threshold: 0.1 });
+      }, { threshold: 0.2 });
       elements.forEach(element => observer.observe(element));
 
       // Scroll indicator visibility
       const scrollIndicator = document.querySelector('.scroll-indicator');
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
+        if (window.scrollY > 100) {
           scrollIndicator.classList.add('hidden');
         } else {
           scrollIndicator.classList.remove('hidden');
         }
+      });
+
+      // Parallax effect for header background
+      window.addEventListener('scroll', () => {
+        const header = document.querySelector('.header-bg');
+        const scrollPosition = window.scrollY;
+        header.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
       });
     });
   </script>

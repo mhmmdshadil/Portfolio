@@ -196,14 +196,46 @@
       color: transparent;
       font-weight: 800;
     }
+    .audio-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1000;
+      background: linear-gradient(45deg, #FF9966, #FF6B3D);
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 153, 102, 0.3);
+      transition: all 0.4s ease;
+    }
+    .audio-toggle:hover {
+      background: linear-gradient(45deg, #FF6B3D, #FF9966);
+      transform: scale(1.1);
+    }
+    .tutorial-pulse {
+      animation: pulseGlow 2s ease-in-out 2;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(255, 153, 102, 0.7); }
+      50% { box-shadow: 0 0 0 8px rgba(255, 153, 102, 0.3); transform: scale(1.05); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 153, 102, 0); }
+    }
   </style>
 </head>
 <body>
   <!-- Background Audio -->
   <audio id="background-music" loop muted>
-    <source src="https://example.com/path-to-your-audio-file.mp3" type="audio/mpeg">
+    <source src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/audio/%D9%85%D9%86%20%D9%84%D9%8A%20%D8%B3%D9%88%D8%A7%D9%87%20%20%D8%AD%D8%A7%D9%85%D8%AF%20%D8%A7%D9%84%D8%B8%D9%81%D9%8A%D8%B1%D9%8A%20%20Mn%20le%20siwah%20%20Hamid%20Althufiri%20-%20Hamid%20Althufiri%20%D8%AD%D8%A7%D9%85%D8%AF%20%D8%A7%D9%84%D8%B8%D9%81%D9%8A%D8%B1%D9%8A.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+
+  <!-- Audio Toggle Button -->
+  <button id="audio-toggle" class="audio-toggle tutorial-pulse" aria-label="Toggle background music">
+    <svg id="audio-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5F5F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <!-- Music note icon (default) -->
+      <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
+    </svg>
+  </button>
 
   <!-- Header Section -->
   <header class="header-bg py-16 md:py-24 shadow-2xl">
@@ -393,16 +425,42 @@
 
       // Background music control
       const audio = document.getElementById('background-music');
-      // Unmute and play audio on first user interaction
-      const playAudio = () => {
-        audio.muted = false;
-        audio.play().catch(err => console.log('Audio play failed:', err));
-        // Remove event listeners after first interaction
-        document.removeEventListener('click', playAudio);
-        document.removeEventListener('touchstart', playAudio);
+      const audioToggle = document.getElementById('audio-toggle');
+      const audioIcon = document.getElementById('audio-icon');
+
+      // Function to update button icon based on audio state
+      const updateAudioIcon = () => {
+        if (audio.paused) {
+          audioIcon.innerHTML = '<path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>'; // Music note icon
+        } else {
+          audioIcon.innerHTML = '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>'; // Pause icon
+        }
       };
-      document.addEventListener('click', playAudio);
-      document.addEventListener('touchstart', playAudio);
+
+      // Toggle play/pause on button click
+      audioToggle.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.muted = false;
+          audio.play().catch(err => console.error('Audio play failed:', err));
+        } else {
+          audio.pause();
+        }
+        updateAudioIcon();
+      });
+
+      // Update icon on audio play/pause events
+      audio.addEventListener('play', updateAudioIcon);
+      audio.addEventListener('pause', updateAudioIcon);
+
+      // Log error if audio fails to load
+      audio.addEventListener('error', () => {
+        console.error('Audio failed to load. Check the source URL:', audio.src);
+      });
+
+      // Remove tutorial pulse after animation completes
+      audioToggle.addEventListener('animationend', () => {
+        audioToggle.classList.remove('tutorial-pulse');
+      });
     });
   </script>
 </body>

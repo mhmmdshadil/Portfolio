@@ -220,6 +220,25 @@
       50% { box-shadow: 0 0 0 8px rgba(255, 153, 102, 0.3); transform: scale(1.05); }
       100% { box-shadow: 0 0 0 0 rgba(255, 153, 102, 0); }
     }
+    /* Center-align last project */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+    }
+    .portfolio-grid .portfolio-card:last-child {
+      grid-column: span 1;
+      justify-self: center;
+    }
+    @media (min-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .portfolio-grid .portfolio-card:last-child {
+        grid-column: 2 / 3;
+      }
+    }
   </style>
 </head>
 <body>
@@ -232,7 +251,6 @@
   <!-- Audio Toggle Button -->
   <button id="audio-toggle" class="audio-toggle tutorial-pulse" aria-label="Toggle background music">
     <svg id="audio-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F5F5F5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <!-- Music note icon (default) -->
       <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
     </svg>
   </button>
@@ -305,7 +323,7 @@
     <div class="container mx-auto px-6">
       <h2 class="text-5xl md:text-6xl font-bold text-center mb-8 font-['Playfair_Display']">Portfolio/Projects</h2>
       <div class="section-divider"></div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div class="portfolio-grid">
         <!-- Project 1: Notion Dashboard -->
         <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
           <div class="image-wrapper mb-6">
@@ -344,7 +362,26 @@
           </a>
         </div>
 
-        <!-- Project 3: Mystery Project -->
+        <!-- Project 3: Payroll Software -->
+        <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
+          <div class="image-wrapper mb-6">
+            <img 
+              src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/payroll/PAYROLL.png" 
+              alt="Payroll Software Preview" 
+              class="rounded-xl w-full h-60 object-cover"
+              loading="lazy"
+            />
+          </div>
+          <h3 class="text-2xl font-semibold text-[#FF9966] mb-4">Payroll Software</h3>
+          <p class="text-[#F5F5F5] mb-4">
+            An Excel-based payroll software designed to streamline employee salary calculations and management.
+          </p>
+          <a href="https://github.com/mhmmdshadil/muhammed-shadil/blob/main/payroll/payroll.xlsx" class="text-[#FF9966] font-semibold inline-block hover:text-[#FF6B3D] transition-colors">
+            View Payroll Software
+          </a>
+        </div>
+
+        <!-- Project 4: Mystery Project -->
         <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
           <div class="image-wrapper mb-6">
             <img 

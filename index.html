@@ -10,7 +10,7 @@
   <meta property="og:description" content="Explore the portfolio of Muhammed Shadil MP, a 19-year-old tech enthusiast from Kerala.">
   <title>Muhammed Shadil MP</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       background: linear-gradient(180deg, #1A0B06 0%, #0F0704 100%);
@@ -41,9 +41,11 @@
       position: relative;
       overflow: hidden;
     }
-    .portfolio-card:hover {
+    .portfolio-card:hover, .portfolio-card:focus-within {
       transform: translateY(-12px);
       box-shadow: 0 16px 32px rgba(255, 153, 102, 0.4);
+      outline: 2px solid #FF9966;
+      outline-offset: 2px;
     }
     .portfolio-card::before {
       content: '';
@@ -74,10 +76,12 @@
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(255, 153, 102, 0.3);
     }
-    .cta-button:hover {
+    .cta-button:hover, .cta-button:focus {
       background: linear-gradient(45deg, #FF6B3D, #FF9966);
       transform: scale(1.1);
       box-shadow: 0 8px 20px rgba(255, 153, 102, 0.5);
+      outline: 2px solid #FF9966;
+      outline-offset: 2px;
     }
     .cta-button::before {
       content: '';
@@ -157,6 +161,11 @@
       border-radius: 20px;
       transition: all 0.4s ease;
     }
+    @supports not (backdrop-filter: blur(12px)) {
+      .glass-effect {
+        background: rgba(31, 12, 7, 0.6);
+      }
+    }
     .glass-effect:hover {
       background: rgba(31, 12, 7, 0.5);
       box-shadow: 0 8px 24px rgba(255, 153, 102, 0.2);
@@ -190,13 +199,13 @@
       100% { transform: translateY(24px) rotate(45deg); opacity: 0; }
     }
     .highlight-text {
+      color: #FF9966;
       background: linear-gradient(90deg, #FF9966, #FF6B3D);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       font-weight: 800;
     }
-    /* Apple-styled icons */
     .social-icon, .audio-toggle {
       display: inline-flex;
       align-items: center;
@@ -225,7 +234,6 @@
       50% { box-shadow: 0 0 0 8px rgba(255, 153, 102, 0.3); transform: scale(1.05); }
       100% { box-shadow: 0 0 0 0 rgba(255, 153, 102, 0); }
     }
-    /* Icon container */
     .icon-container {
       position: fixed;
       top: 1rem;
@@ -234,22 +242,27 @@
       gap: 12px;
       z-index: 1000;
     }
-    /* Center-align last project */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
       justify-items: center;
     }
-    .portfolio-grid .portfolio-card:last-child {
-      grid-column: span 1;
-      justify-self: center;
-    }
     @media (min-width: 768px) {
       .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
       }
-      .portfolio-grid .portfolio-card:last-child {
+      .portfolio-grid:has(> :nth-child(3n + 1):last-child) .portfolio-card:last-child {
         grid-column: 2 / 3;
       }
     }
@@ -257,8 +270,8 @@
 </head>
 <body>
   <!-- Background Audio -->
-  <audio id="background-music" loop muted>
-    <source src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/audio/%D9%85%D9%86%20%D9%84%D9%8A%20%D8%B3%D9%88%D8%A7%D9%87%20%20%D8%AD%D8%A7%D9%85%D8%AF%20%D8%A7%D9%84%D8%B8%D9%81%D9%8A%D8%B1%D9%8A%20%20Mn%20le%20siwah%20%20Hamid%20Althufiri%20-%20Hamid%20Althufiri%20%D8%AD%D8%A7%D9%85%D8%AF%20%D8%A7%D9%84%D8%B8%D9%81%D9%8A%D8%B1%D9%8A.mp3" type="audio/mpeg">
+  <audio id="background-music" loop muted preload="none">
+    <source src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/audio/background-music.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
@@ -274,7 +287,8 @@
         <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.97.24 2.43.41.58.22 1.01.48 1.46.93.45.45.71.88.93 1.46.17.46.35 1.26.41 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.24 1.97-.41 2.43-.22.58-.48 1.01-.93 1.46-.45.45-.88.71-1.46.93-.46.17-1.26.35-2.43.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.97-.24-2.43-.41-.58-.22-1.01-.48-1.46-.93-.45-.45-.71-.88-.93-1.46-.17-.46-.35-1.26-.41-2.43-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.06-1.17.24-1.97.41-2.43.22-.58.48-1.01.93-1.46.45-.45.88-.71 1.46-.93.46-.17 1.26-.35 2.43-.41 1.27-.06 1.65-.07 4.85-.07zm0-2.16c-3.26 0-3.67.01-4.95.07-1.32.07-2.22.27-3 .57-.78.3-1.44.71-2.1 1.37-.66.66-1.07 1.32-1.37 2.1-.3.78-.5 1.68-.57 3-.06 1.28-.07 1.69-.07 4.95s.01 3.67.07 4.95c.07 1.32.27 2.22.57 3 .3.78.71 1.44 1.37 2.1.66.66 1.32 1.07 2.1 1.37.78.3 1.68.5 3 .57 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.32-.07 2.22-.27 3-.57.78-.3 1.44-.71 2.1-1.37.66-.66 1.07-1.32 1.37-2.1.3-.78.5-1.68.57-3 .06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.07-1.32-.27-2.22-.57-3-.3-.78-.71-1.44-1.37-2.1-.66-.66-1.32-1.07-2.1-1.37-.78-.3-1.68-.5-3-.57-1.28-.06-1.69-.07-4.95-.07zm0 5.83a6.17 6.17 0 100 12.34 6.17 6.17 0 000-12.34zm0 10.17a4 4 0 110-8 4 4 0 010 8zm6.47-10.67a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
       </svg>
     </a>
-    <button id="audio-toggle" class="audio-toggle tutorial-pulse" aria-label="Toggle background music">
+    <button id="audio-toggle" class="audio-toggle tutorial-pulse" aria-label="Toggle background music" title="Play or pause background music">
+      <span class="sr-only">Toggle background music</span>
       <svg id="audio-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
       </svg>
@@ -287,7 +301,7 @@
       <div class="image-wrapper w-56 h-56 md:w-64 md:h-64 rounded-full border-4 border-[#FF9966] mb-10 shadow-2xl fade-in" style="animation-delay: 0.3s;">
         <img 
           src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" 
-          alt="Muhammed Shadil MP profile picture" 
+          alt="Muhammed Shadil MP, a 19-year-old tech enthusiast from Kerala" 
           class="w-full h-full rounded-full object-cover"
           loading="lazy"
         />
@@ -355,7 +369,7 @@
           <div class="image-wrapper mb-6">
             <img 
               src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/notion/NOTION.png" 
-              alt="Notion Dashboard Preview" 
+              alt="Personal Notion Dashboard with organized project and social media layout" 
               class="rounded-xl w-full h-60 object-cover"
               loading="lazy"
             />
@@ -369,31 +383,12 @@
           </a>
         </div>
 
-        <!-- Project 2: Ethereal Muslim Instagram Page -->
-        <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
-          <div class="image-wrapper mb-6">
-            <img 
-              src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/etherial.muslim/K%20DRAMA.png" 
-              alt="Ethereal Muslim Instagram Page Preview" 
-              class="rounded-xl w-full h-60 object-cover"
-              loading="lazy"
-            />
-          </div>
-          <h3 class="text-2xl font-semibold text-[#FF9966] mb-4">Ethereal Muslim Instagram</h3>
-          <p class="text-[#F5F5F5] mb-4">
-            My Islam-based Instagram page with inspiring reels and authentic Islamic content to strengthen Imaan.
-          </p>
-          <a href="https://www.instagram.com/ethereal.muslim/" class="text-[#FF9966] font-semibold inline-block hover:text-[#FF6B3D] transition-colors" rel="nofollow">
-            Visit Ethereal Muslim
-          </a>
-        </div>
-
-        <!-- Project 3: Payroll Software -->
+        <!-- Project 2: Payroll Software -->
         <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
           <div class="image-wrapper mb-6">
             <img 
               src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/payroll/PAYROLL.png" 
-              alt="Payroll Software Preview" 
+              alt="Excel-based payroll software for employee salary management" 
               class="rounded-xl w-full h-60 object-cover"
               loading="lazy"
             />
@@ -407,12 +402,12 @@
           </a>
         </div>
 
-        <!-- Project 4: Mystery Project -->
+        <!-- Project 3: Mystery Project -->
         <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
           <div class="image-wrapper mb-6">
             <img 
               src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/mystery/mystery.png" 
-              alt="Mystery Project Preview" 
+              alt="Mystery Project placeholder image" 
               class="rounded-xl w-full h-60 object-cover"
               loading="lazy"
             />
@@ -437,7 +432,7 @@
           Email: <a href="mailto:mhmmd.shadil.mp@gmail.com" class="text-[#FF9966] hover:text-[#FF6B3D] transition-colors">mhmmd.shadil.mp@gmail.com</a>
         </p>
         <p class="text-lg">
-          LinkedIn: <a href="#" class="text-[#FF9966] hover:text-[#FF6B3D] transition-colors">Profile coming soon</a>
+          LinkedIn: <span class="text-[#FF9966]">Profile coming soon</span>
         </p>
         <a href="mailto:mhmmd.shadil.mp@gmail.com" class="inline-block px-10 py-5 text-xl font-semibold text-[#F5F5F5] cta-button">
           Send a Message
@@ -454,7 +449,6 @@
   </footer>
 
   <script>
-    // Enhanced scroll and animation effects
     document.addEventListener('DOMContentLoaded', () => {
       const elements = document.querySelectorAll('.fade-in');
       const observer = new IntersectionObserver((entries) => {
@@ -463,10 +457,9 @@
             entry.target.style.animationPlayState = 'running';
           }
         });
-      }, { threshold: 0.2 });
+      }, { threshold: 0.1, rootMargin: '50px' });
       elements.forEach(element => observer.observe(element));
 
-      // Scroll indicator visibility
       const scrollIndicator = document.querySelector('.scroll-indicator');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -476,48 +469,44 @@
         }
       });
 
-      // Parallax effect for header background
       window.addEventListener('scroll', () => {
         const header = document.querySelector('.header-bg');
         const scrollPosition = window.scrollY;
         header.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
       });
 
-      // Background music control
       const audio = document.getElementById('background-music');
       const audioToggle = document.getElementById('audio-toggle');
       const audioIcon = document.getElementById('audio-icon');
 
-      // Function to update button icon based on audio state
       const updateAudioIcon = () => {
-        if (audio.paused) {
-          audioIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
-        } else {
-          audioIcon.innerHTML = '<path d="M6 7h3v10H6zm9 0h3v10h-3z"/>';
-        }
+        audioIcon.innerHTML = audio.paused
+          ? '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>'
+          : '<path d="M6 7h3v10H6zm9 0h3v10h-3z"/>';
       };
 
-      // Toggle play/pause on button click
       audioToggle.addEventListener('click', () => {
         if (audio.paused) {
           audio.muted = false;
-          audio.play().catch(err => console.error('Audio play failed:', err));
+          audio.play().catch(err => {
+            console.error('Audio play failed:', err);
+            audioToggle.disabled = true;
+            audioToggle.title = 'Audio unavailable';
+          });
         } else {
           audio.pause();
         }
         updateAudioIcon();
       });
 
-      // Update icon on audio play/pause events
       audio.addEventListener('play', updateAudioIcon);
       audio.addEventListener('pause', updateAudioIcon);
-
-      // Log error if audio fails to load
       audio.addEventListener('error', () => {
         console.error('Audio failed to load. Check the source URL:', audio.src);
+        audioToggle.disabled = true;
+        audioToggle.title = 'Audio unavailable';
       });
 
-      // Remove tutorial pulse after animation completes
       audioToggle.addEventListener('animationend', () => {
         audioToggle.classList.remove('tutorial-pulse');
       });

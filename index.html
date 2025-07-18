@@ -308,6 +308,36 @@
       height: 100%;
       z-index: -2;
     }
+    /* Updated Loader Styles */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+    .loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .loader-text {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #000000;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .loader-text span {
+      opacity: 0;
+    }
   </style>
 </head>
 <body>
@@ -577,7 +607,6 @@
       const particles = new THREE.Points(particlesGeometry, particlesMaterial);
       scene.add(particles);
 
-      // Water-like cursor effect
       let mouse = new THREE.Vector2(0, 0);
       let targetCameraPos = new THREE.Vector3(0, 0, 5);
       document.addEventListener('mousemove', (e) => {
@@ -647,7 +676,7 @@
         scrollToggle.classList.remove('tutorial-pulse');
       });
 
-      // Enhanced Chatbot Functionality with Numbered Questions
+      // Chatbot Functionality with xAI Grok API
       const chatbotToggle = document.getElementById('chatbot-toggle');
       const chatbotWindow = document.getElementById('chatbot-window');
       const chatbotMessages = document.getElementById('chatbot-messages');
@@ -662,140 +691,103 @@
         chatbotToggle.classList.remove('tutorial-pulse');
       });
 
-      const responses = {
-        greetings: ['Hi!', 'Hello!', 'Hey there!'],
-        portfolio: {
-          general: 'Muhammed is a talented UI/UX Designer and Web Developer. His portfolio showcases projects like a Notion Dashboard, Payroll Software, and a Mystery Project. Want to know about a specific project?',
-          notion: 'The Notion Dashboard is a customized page for organizing projects and social media with a clean, creative layout. Check it out at: https://succulent-eucalyptus-e0f.notion.site/1df7d1a684bf80ab9ed1f559d480717a?source=copy_link',
-          payroll: 'The Payroll Software is an Excel-based tool for streamlining employee salary calculations. You can view it here: https://github.com/mhmmdshadil/muhammed-shadil/blob/main/payroll/payroll.xlsx',
-          mystery: 'The Mystery Project is a secret venture blending tech and creativity. It’s not unveiled yet, but stay tuned for something exciting!'
-        },
-        skills: 'Muhammed specializes in UI/UX Design, AI Integration, Web Development, and Creative Direction. Want details on any of these?',
-        contact: 'You can reach Muhammed at mhmmd.shadil.mp@gmail.com or use the "Send a Message" button in the Contact section!',
-        thanks: ['You’re welcome!', 'Happy to help!', 'No problem!'],
-        web: {
-          uiux: 'UI/UX design focuses on creating user-friendly and visually appealing interfaces. Key principles include usability, accessibility, and intuitive navigation. Tools like Figma, Adobe XD, and Sketch are popular. Want tips on a specific tool?',
-          webdev: 'Web development involves building websites using HTML, CSS, JavaScript, and frameworks like React, Vue, or Webflow. For example, this portfolio uses Tailwind CSS and Three.js. Need advice on a specific technology?',
-          ai: 'AI integration enhances apps with features like chatbots, recommendation systems, or automation. Frameworks like TensorFlow, PyTorch, or xAI’s Grok API are great starting points. Curious about a specific AI use case?',
-          trends: 'Current tech trends include AI-driven design, Web3, no-code platforms like Webflow, and immersive WebGL experiences. Want to explore one of these topics?',
-          javascript: 'JavaScript is a versatile language for web development. It powers interactive elements like this portfolio’s 3D globe (using Three.js) and animations (using GSAP). Want to learn about a specific JavaScript library?',
-          css: 'CSS styles web pages, with frameworks like Tailwind CSS simplifying responsive design. This portfolio uses Tailwind for its sleek, modern look. Need help with CSS techniques?',
-          science: 'Science covers fields like physics, biology, and astronomy. For example, recent advances in quantum computing are exciting! Want to dive into a specific science topic?',
-          history: 'History spans everything from ancient civilizations to modern events. Did you know the internet became widely accessible in the 1990s? What history topic interests you?',
-          current: 'As of July 18, 2025, tech is booming with AI and Web3 advancements. Want to know about recent events or trends in a specific area?'
-        },
-        numbered: {
-          '1': 'Muhammed is a talented UI/UX Designer and Web Developer. His portfolio showcases projects like a Notion Dashboard, Payroll Software, and a Mystery Project. Want to know about a specific project?',
-          '2': 'The Notion Dashboard is a customized page for organizing projects and social media with a clean, creative layout. Check it out at: https://succulent-eucalyptus-e0f.notion.site/1df7d1a684bf80ab9ed1f559d480717a?source=copy_link',
-          '3': 'The Payroll Software is an Excel-based tool for streamlining employee salary calculations. You can view it here: https://github.com/mhmmdshadil/muhammed-shadil/blob/main/payroll/payroll.xlsx',
-          '4': 'The Mystery Project is a secret venture blending tech and creativity. It’s not unveiled yet, but stay tuned for something exciting!',
-          '5': 'Muhammed specializes in UI/UX Design, AI Integration, Web Development, and Creative Direction. Want details on any of these?',
-          '6': 'You can reach Muhammed at mhmmd.shadil.mp@gmail.com or use the "Send a Message" button in the Contact section!',
-          '7': 'UI/UX design focuses on creating user-friendly and visually appealing interfaces. Key principles include usability, accessibility, and intuitive navigation. Tools like Figma, Adobe XD, and Sketch are popular. Want tips on a specific tool?',
-          '8': 'Web development involves building websites using HTML, CSS, JavaScript, and frameworks like React, Vue, or Webflow. For example, this portfolio uses Tailwind CSS and Three.js. Need advice on a specific technology?',
-          '9': 'AI integration enhances apps with features like chatbots, recommendation systems, or automation. Frameworks like TensorFlow, PyTorch, or xAI’s Grok API are great starting points. Curious about a specific AI use case?',
-          '10': 'Current tech trends include AI-driven design, Web3, no-code platforms like Webflow, and immersive WebGL experiences. Want to explore one of these topics?',
-          '11': 'JavaScript is a versatile language for web development. It powers interactive elements like this portfolio’s 3D globe (using Three.js) and animations (using GSAP). Want to learn about a specific JavaScript library?',
-          '12': 'CSS styles web pages, with frameworks like Tailwind CSS simplifying responsive design. This portfolio uses Tailwind for its sleek, modern look. Need help with CSS techniques?',
-          '13': 'Science covers fields like physics, biology, and astronomy. For example, recent advances in quantum computing are exciting! Want to dive into a specific science topic?',
-          '14': 'History spans everything from ancient civilizations to modern events. Did you know the internet became widely accessible in the 1990s? What history topic interests you?',
-          '15': 'As of July 18, 2025, tech is booming with AI and Web3 advancements. Want to know about recent events or trends in a specific area?'
-        },
-        fallback: ['Hmm, that’s an interesting question! Try typing a number from 1 to 15 or ask about Muhammed’s projects, tech, or something else.', 'I’m not sure about that one. Type a number from 1 to 15 or ask about tech, design, or Muhammed’s work!']
+      // Predefined prompts for numbered questions
+      const questionPrompts = {
+        '1': 'Tell me about Muhammed Shadil MP’s portfolio, including details about his projects and skills.',
+        '2': 'Explain the Notion Dashboard project by Muhammed Shadil MP, including its purpose and features.',
+        '3': 'Describe the Payroll Software project by Muhammed Shadil MP, including its functionality and how it works.',
+        '4': 'What is the Mystery Project by Muhammed Shadil MP? Provide any available details.',
+        '5': 'What skills does Muhammed Shadil MP specialize in, and how does he apply them in his work?',
+        '6': 'How can I contact Muhammed Shadil MP? Provide his email and any other contact methods.',
+        '7': 'What is UI/UX design, and what tools are commonly used for it?',
+        '8': 'What does web development involve, including key technologies and frameworks?',
+        '9': 'How is AI used in projects like Muhammed Shadil MP’s portfolio? Provide examples.',
+        '10': 'What are the latest technology trends in 2025, especially in AI, web development, or UI/UX?',
+        '11': 'How does JavaScript power Muhammed Shadil MP’s portfolio website? Mention specific libraries or features.',
+        '12': 'What role does CSS play in Muhammed Shadil MP’s portfolio? Explain its impact on the design.',
+        '13': 'What are some recent advances in science, such as in physics, biology, or technology?',
+        '14': 'Share an interesting fact from history, preferably related to technology or innovation.',
+        '15': 'What are some current events or trends as of July 2025, especially in technology or global developments?'
       };
 
-      // Placeholder for real API integration
-      /*
+      // Replace with your xAI Grok API key (securely store in production)
+      const API_KEY = 'YOUR_XAI_GROK_API_KEY'; // Obtain from https://x.ai/api
+      const API_URL = 'https://api.x.ai/v1/chat/completions'; // Example endpoint, verify in xAI documentation
+
       async function getBotResponse(message) {
+        const msg = message.trim();
+        let prompt = msg;
+
+        // Map numbered inputs to predefined prompts
+        if (questionPrompts[msg]) {
+          prompt = questionPrompts[msg];
+        }
+
+        // Show loading indicator
+        addMessage('Thinking...', 'bot');
+
         try {
-          const response = await fetch('YOUR_BACKEND_ENDPOINT', {
+          const response = await fetch(API_URL, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: message, apiKey: 'YOUR_XAI_API_KEY' })
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${API_KEY}`
+            },
+            body: JSON.stringify({
+              model: 'grok-3', // Use Grok 3 for free tier
+              messages: [
+                {
+                  role: 'system',
+                  content: 'You are a helpful AI assistant for Muhammed Shadil MP’s portfolio website. Provide accurate, concise, and professional responses about his projects, skills, and related topics. For general questions, give insightful and up-to-date answers based on your knowledge as of July 2025.'
+                },
+                {
+                  role: 'user',
+                  content: prompt
+                }
+              ],
+              max_tokens: 500,
+              temperature: 0.7
+            })
           });
-          const data = await response.json();
-          return data.reply || 'Sorry, I couldn’t process that. Try again!';
+
+          // Remove loading message
+          const messages = chatbotMessages.querySelectorAll('.chatbot-message.bot');
+          messages[messages.length - 1].remove();
+
+          if (response.ok) {
+            const data = await response.json();
+            const reply = data.choices[0]?.message?.content || 'Sorry, I couldn’t process that. Try again!';
+            return reply;
+          } else if (response.status === 429) {
+            return 'Rate limit reached. Please wait a moment and try again.';
+          } else {
+            return 'Error connecting to the API. Please try again or contact support.';
+          }
         } catch (error) {
           console.error('API Error:', error);
-          return 'Oops, something went wrong. Try typing a number from 1 to 15!';
+          return 'Oops, something went wrong. Try again or type a number from 1 to 15!';
         }
-      }
-      */
-
-      function getBotResponse(message) {
-        const msg = message.toLowerCase().trim();
-        // Handle numbered questions
-        if (responses.numbered[msg]) {
-          return responses.numbered[msg];
-        }
-        // Handle other queries
-        if (['hi', 'hello', 'hey'].some(g => msg.includes(g))) {
-          return responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
-        }
-        if (msg.includes('portfolio') || msg.includes('project')) {
-          if (msg.includes('notion')) return responses.portfolio.notion;
-          if (msg.includes('payroll')) return responses.portfolio.payroll;
-          if (msg.includes('mystery')) return responses.portfolio.mystery;
-          return responses.portfolio.general;
-        }
-        if (msg.includes('skill') || msg.includes('what he do') || msg.includes('what does he do')) {
-          return responses.skills;
-        }
-        if (msg.includes('contact') || msg.includes('reach') || msg.includes('email')) {
-          return responses.contact;
-        }
-        if (msg.includes('thank') || msg.includes('thanks')) {
-          return responses.thanks[Math.floor(Math.random() * responses.thanks.length)];
-        }
-        if (msg.includes('ui') || msg.includes('ux') || msg.includes('design')) {
-          return responses.web.uiux;
-        }
-        if (msg.includes('web') || msg.includes('development') || msg.includes('coding')) {
-          return responses.web.webdev;
-        }
-        if (msg.includes('ai') || msg.includes('artificial intelligence')) {
-          return responses.web.ai;
-        }
-        if (msg.includes('trend') || msg.includes('tech trend')) {
-          return responses.web.trends;
-        }
-        if (msg.includes('javascript') || msg.includes('js')) {
-          return responses.web.javascript;
-        }
-        if (msg.includes('css') || msg.includes('style') || msg.includes('styling')) {
-          return responses.web.css;
-        }
-        if (msg.includes('science') || msg.includes('physics') || msg.includes('biology')) {
-          return responses.web.science;
-        }
-        if (msg.includes('history') || msg.includes('past')) {
-          return responses.web.history;
-        }
-        if (msg.includes('current') || msg.includes('news') || msg.includes('events')) {
-          return responses.web.current;
-        }
-        return responses.fallback[Math.floor(Math.random() * responses.fallback.length)];
       }
 
       function addMessage(content, sender) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('chatbot-message', sender);
-        messageDiv.innerHTML = content.replace(/\n/g, '<br>'); // Support line breaks
+        messageDiv.innerHTML = content.replace(/\n/g, '<br>');
         chatbotMessages.appendChild(messageDiv);
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
       }
 
-      chatbotSend.addEventListener('click', () => {
+      chatbotSend.addEventListener('click', async () => {
         const message = chatbotInput.value.trim();
         if (message) {
           addMessage(message, 'user');
-          const response = getBotResponse(message);
-          setTimeout(() => addMessage(response, 'bot'), 500);
+          const response = await getBotResponse(message);
+          addMessage(response, 'bot');
           chatbotInput.value = '';
         }
       });
 
-      chatbotInput.addEventListener('keypress', (e) => {
+      chatbotInput.addEventListener('keypress', async (e) => {
         if (e.key === 'Enter') {
           chatbotSend.click();
         }

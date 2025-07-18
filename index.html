@@ -10,6 +10,8 @@
   <meta property="og:description" content="Explore the portfolio of Muhammed Shadil MP, a tech enthusiast specializing in UI/UX, AI, and web development.">
   <title>Muhammed Shadil MP</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -35,10 +37,7 @@
       animation: fadeIn 0.6s ease-out forwards;
     }
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
     .portfolio-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -80,12 +79,10 @@
     .header-bg {
       position: relative;
       z-index: 1;
-      overflow: hidden;
-      background: url('https://source.unsplash.com/random/1920x1080/?tech') no-repeat center;
-      background-size: cover;
       min-height: 100vh;
       display: flex;
       align-items: center;
+      overflow: hidden;
     }
     .header-bg::before {
       content: '';
@@ -105,9 +102,7 @@
       transition: all 0.3s ease;
     }
     @supports not (backdrop-filter: blur(10px)) {
-      .glass-effect {
-        background: rgba(255, 255, 255, 0.1);
-      }
+      .glass-effect { background: rgba(255, 255, 255, 0.1); }
     }
     .glass-effect:hover {
       background: rgba(255, 255, 255, 0.08);
@@ -305,14 +300,29 @@
     .chatbot-send:hover {
       background: #F5F5F5;
     }
+    #globe-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
   </style>
 </head>
 <body>
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-text">
+      <span>S</span> · <span>H</span> · <span>A</span> · <span>D</span> · <span>I</span> · <span>L</span>
+    </div>
+  </div>
+
   <!-- Icon Container -->
   <div class="icon-container">
     <a href="https://github.com/mhmmdshadil" class="social-icon" aria-label="GitHub Profile">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.61-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.070-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.52.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
+        <path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.61-3.37-1.34-3.37-1.34-.45-1.15-1.1-1.46-1.1-1.46-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0112 6.8c.85.004 1.71.11 2.52.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0022 12c0-5.52-4.48-10-10-10z"/>
       </svg>
     </a>
     <a href="https://www.instagram.com/mhmmd.shadil/" class="social-icon" aria-label="Instagram Profile">
@@ -338,10 +348,28 @@
     <div id="chatbot-window" class="chatbot-window">
       <div class="chatbot-header">AI Assistant</div>
       <div id="chatbot-messages" class="chatbot-messages">
-        <div class="chatbot-message bot">Hi! I'm your AI assistant. Ask me about Muhammed's portfolio or anything else!</div>
+        <div class="chatbot-message bot">
+          Hi! I'm your AI assistant. Type a number to ask a question:<br>
+          1. About Muhammed’s portfolio<br>
+          2. Notion Dashboard project<br>
+          3. Payroll Software project<br>
+          4. Mystery Project<br>
+          5. Muhammed’s skills<br>
+          6. Contact Muhammed<br>
+          7. UI/UX design and tools<br>
+          8. Web development<br>
+          9. AI in projects<br>
+          10. Latest tech trends (2025)<br>
+          11. JavaScript in this website<br>
+          12. CSS in this portfolio<br>
+          13. Advances in science<br>
+          14. History fact<br>
+          15. Current events (July 2025)<br>
+          Or ask anything else!
+        </div>
       </div>
       <div class="chatbot-input-container">
-        <input id="chatbot-input" class="chatbot-input" type="text" placeholder="Type a message..." aria-label="Chatbot input">
+        <input id="chatbot-input" class="chatbot-input" type="text" placeholder="Type a number or question..." aria-label="Chatbot input">
         <button id="chatbot-send" class="chatbot-send">Send</button>
       </div>
     </div>
@@ -349,7 +377,8 @@
 
   <!-- Header Section -->
   <header class="header-bg py-16 md:py-24 shadow-2xl">
-    <div class="container mx-auto text-center flex flex-col items-center px-6">
+    <canvas id="globe-canvas"></canvas>
+    <div class="container mx-auto text-center flex flex-col items-center px-6 relative z-10">
       <div class="image-wrapper w-56 h-56 md:w-64 md:h-64 rounded-full border-2 border-[#FFFFFF] mb-10 shadow-2xl fade-in" style="animation-delay: 0.3s;">
         <img 
           src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" 
@@ -358,10 +387,10 @@
           loading="lazy"
         />
       </div>
-      <h1 class="text-5xl md:text-7xl font-bold tracking-tight drop-shadow-2xl fade-in" style="animation-delay: 0.5s;">
+      <h1 class="text-5xl md:text-7xl font-bold tracking-tight drop-shadow-2xl" id="header-title">
         <span class="highlight-text">Muhammed Shadil MP</span>
       </h1>
-      <p class="mt-6 text-xl md:text-2xl font-medium fade-in" style="animation-delay: 0.7s;">
+      <p class="mt-6 text-xl md:text-2xl font-medium" id="header-subtitle">
         UI/UX Designer & Web Developer
       </p>
       <a href="#contact" aria-label="Navigate to contact section" class="mt-10 inline-block px-10 py-5 text-lg font-semibold cta-button fade-in" style="animation-delay: 0.9s;">
@@ -489,6 +518,91 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Loader Animation
+      const loader = document.getElementById('loader');
+      const loaderText = document.querySelectorAll('.loader-text span');
+      gsap.to(loaderText, {
+        opacity: 1,
+        stagger: 0.2,
+        duration: 0.5,
+        ease: 'power2.inOut',
+        onComplete: () => {
+          gsap.to(loader, {
+            opacity: 0,
+            duration: 0.5,
+            delay: 0.5,
+            onComplete: () => {
+              loader.classList.add('hidden');
+            }
+          });
+        }
+      });
+
+      // Text Animations
+      gsap.from('#header-title', {
+        opacity: 0,
+        scale: 0.8,
+        duration: 1,
+        ease: 'power2.out',
+        delay: 1
+      });
+      gsap.from('#header-subtitle', {
+        opacity: 0,
+        y: 20,
+        duration: 1,
+        ease: 'power2.out',
+        delay: 1.2
+      });
+
+      // 3D Globe with Water-Like Cursor Effect
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('globe-canvas'), alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.position.z = 5;
+
+      const geometry = new THREE.SphereGeometry(2, 32, 32);
+      const material = new THREE.MeshBasicMaterial({ color: 0x1C2526, wireframe: true });
+      const globe = new THREE.Mesh(geometry, material);
+      scene.add(globe);
+
+      const particlesGeometry = new THREE.BufferGeometry();
+      const particlesCount = 1000;
+      const posArray = new Float32Array(particlesCount * 3);
+      for (let i = 0; i < particlesCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 10;
+      }
+      particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+      const particlesMaterial = new THREE.PointsMaterial({ size: 0.02, color: 0xFFFFFF });
+      const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+      scene.add(particles);
+
+      // Water-like cursor effect
+      let mouse = new THREE.Vector2(0, 0);
+      let targetCameraPos = new THREE.Vector3(0, 0, 5);
+      document.addEventListener('mousemove', (e) => {
+        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        targetCameraPos.x = mouse.x * 2;
+        targetCameraPos.y = mouse.y * 1;
+      });
+
+      function animateGlobe() {
+        requestAnimationFrame(animateGlobe);
+        globe.rotation.y += 0.002;
+        particles.rotation.y += 0.001;
+        camera.position.lerp(targetCameraPos, 0.1);
+        camera.lookAt(0, 0, 0);
+        renderer.render(scene, camera);
+      }
+      animateGlobe();
+
+      window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
       // Scroll and Fade Animations
       const elements = document.querySelectorAll('.fade-in');
       const observer = new IntersectionObserver((entries) => {
@@ -501,7 +615,7 @@
       elements.forEach(element => observer.observe(element));
 
       const scrollIndicator = document.querySelector('.scroll-indicator');
-      window.addEventListener('scroll', () Seneca {
+      window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
           scrollIndicator.classList.add('hidden');
         } else {
@@ -533,7 +647,7 @@
         scrollToggle.classList.remove('tutorial-pulse');
       });
 
-      // Chatbot Functionality
+      // Enhanced Chatbot Functionality with Numbered Questions
       const chatbotToggle = document.getElementById('chatbot-toggle');
       const chatbotWindow = document.getElementById('chatbot-window');
       const chatbotMessages = document.getElementById('chatbot-messages');
@@ -559,11 +673,62 @@
         skills: 'Muhammed specializes in UI/UX Design, AI Integration, Web Development, and Creative Direction. Want details on any of these?',
         contact: 'You can reach Muhammed at mhmmd.shadil.mp@gmail.com or use the "Send a Message" button in the Contact section!',
         thanks: ['You’re welcome!', 'Happy to help!', 'No problem!'],
-        fallback: ['Hmm, I’m not sure about that. Try asking about Muhammed’s projects, skills, or how to contact him!', 'Could you rephrase that? I’m here to help with info about Muhammed’s work!']
+        web: {
+          uiux: 'UI/UX design focuses on creating user-friendly and visually appealing interfaces. Key principles include usability, accessibility, and intuitive navigation. Tools like Figma, Adobe XD, and Sketch are popular. Want tips on a specific tool?',
+          webdev: 'Web development involves building websites using HTML, CSS, JavaScript, and frameworks like React, Vue, or Webflow. For example, this portfolio uses Tailwind CSS and Three.js. Need advice on a specific technology?',
+          ai: 'AI integration enhances apps with features like chatbots, recommendation systems, or automation. Frameworks like TensorFlow, PyTorch, or xAI’s Grok API are great starting points. Curious about a specific AI use case?',
+          trends: 'Current tech trends include AI-driven design, Web3, no-code platforms like Webflow, and immersive WebGL experiences. Want to explore one of these topics?',
+          javascript: 'JavaScript is a versatile language for web development. It powers interactive elements like this portfolio’s 3D globe (using Three.js) and animations (using GSAP). Want to learn about a specific JavaScript library?',
+          css: 'CSS styles web pages, with frameworks like Tailwind CSS simplifying responsive design. This portfolio uses Tailwind for its sleek, modern look. Need help with CSS techniques?',
+          science: 'Science covers fields like physics, biology, and astronomy. For example, recent advances in quantum computing are exciting! Want to dive into a specific science topic?',
+          history: 'History spans everything from ancient civilizations to modern events. Did you know the internet became widely accessible in the 1990s? What history topic interests you?',
+          current: 'As of July 18, 2025, tech is booming with AI and Web3 advancements. Want to know about recent events or trends in a specific area?'
+        },
+        numbered: {
+          '1': 'Muhammed is a talented UI/UX Designer and Web Developer. His portfolio showcases projects like a Notion Dashboard, Payroll Software, and a Mystery Project. Want to know about a specific project?',
+          '2': 'The Notion Dashboard is a customized page for organizing projects and social media with a clean, creative layout. Check it out at: https://succulent-eucalyptus-e0f.notion.site/1df7d1a684bf80ab9ed1f559d480717a?source=copy_link',
+          '3': 'The Payroll Software is an Excel-based tool for streamlining employee salary calculations. You can view it here: https://github.com/mhmmdshadil/muhammed-shadil/blob/main/payroll/payroll.xlsx',
+          '4': 'The Mystery Project is a secret venture blending tech and creativity. It’s not unveiled yet, but stay tuned for something exciting!',
+          '5': 'Muhammed specializes in UI/UX Design, AI Integration, Web Development, and Creative Direction. Want details on any of these?',
+          '6': 'You can reach Muhammed at mhmmd.shadil.mp@gmail.com or use the "Send a Message" button in the Contact section!',
+          '7': 'UI/UX design focuses on creating user-friendly and visually appealing interfaces. Key principles include usability, accessibility, and intuitive navigation. Tools like Figma, Adobe XD, and Sketch are popular. Want tips on a specific tool?',
+          '8': 'Web development involves building websites using HTML, CSS, JavaScript, and frameworks like React, Vue, or Webflow. For example, this portfolio uses Tailwind CSS and Three.js. Need advice on a specific technology?',
+          '9': 'AI integration enhances apps with features like chatbots, recommendation systems, or automation. Frameworks like TensorFlow, PyTorch, or xAI’s Grok API are great starting points. Curious about a specific AI use case?',
+          '10': 'Current tech trends include AI-driven design, Web3, no-code platforms like Webflow, and immersive WebGL experiences. Want to explore one of these topics?',
+          '11': 'JavaScript is a versatile language for web development. It powers interactive elements like this portfolio’s 3D globe (using Three.js) and animations (using GSAP). Want to learn about a specific JavaScript library?',
+          '12': 'CSS styles web pages, with frameworks like Tailwind CSS simplifying responsive design. This portfolio uses Tailwind for its sleek, modern look. Need help with CSS techniques?',
+          '13': 'Science covers fields like physics, biology, and astronomy. For example, recent advances in quantum computing are exciting! Want to dive into a specific science topic?',
+          '14': 'History spans everything from ancient civilizations to modern events. Did you know the internet became widely accessible in the 1990s? What history topic interests you?',
+          '15': 'As of July 18, 2025, tech is booming with AI and Web3 advancements. Want to know about recent events or trends in a specific area?'
+        },
+        fallback: ['Hmm, that’s an interesting question! Try typing a number from 1 to 15 or ask about Muhammed’s projects, tech, or something else.', 'I’m not sure about that one. Type a number from 1 to 15 or ask about tech, design, or Muhammed’s work!']
       };
+
+      // Placeholder for real API integration
+      /*
+      async function getBotResponse(message) {
+        try {
+          const response = await fetch('YOUR_BACKEND_ENDPOINT', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: message, apiKey: 'YOUR_XAI_API_KEY' })
+          });
+          const data = await response.json();
+          return data.reply || 'Sorry, I couldn’t process that. Try again!';
+        } catch (error) {
+          console.error('API Error:', error);
+          return 'Oops, something went wrong. Try typing a number from 1 to 15!';
+        }
+      }
+      */
 
       function getBotResponse(message) {
         const msg = message.toLowerCase().trim();
+        // Handle numbered questions
+        if (responses.numbered[msg]) {
+          return responses.numbered[msg];
+        }
+        // Handle other queries
         if (['hi', 'hello', 'hey'].some(g => msg.includes(g))) {
           return responses.greetings[Math.floor(Math.random() * responses.greetings.length)];
         }
@@ -582,13 +747,40 @@
         if (msg.includes('thank') || msg.includes('thanks')) {
           return responses.thanks[Math.floor(Math.random() * responses.thanks.length)];
         }
+        if (msg.includes('ui') || msg.includes('ux') || msg.includes('design')) {
+          return responses.web.uiux;
+        }
+        if (msg.includes('web') || msg.includes('development') || msg.includes('coding')) {
+          return responses.web.webdev;
+        }
+        if (msg.includes('ai') || msg.includes('artificial intelligence')) {
+          return responses.web.ai;
+        }
+        if (msg.includes('trend') || msg.includes('tech trend')) {
+          return responses.web.trends;
+        }
+        if (msg.includes('javascript') || msg.includes('js')) {
+          return responses.web.javascript;
+        }
+        if (msg.includes('css') || msg.includes('style') || msg.includes('styling')) {
+          return responses.web.css;
+        }
+        if (msg.includes('science') || msg.includes('physics') || msg.includes('biology')) {
+          return responses.web.science;
+        }
+        if (msg.includes('history') || msg.includes('past')) {
+          return responses.web.history;
+        }
+        if (msg.includes('current') || msg.includes('news') || msg.includes('events')) {
+          return responses.web.current;
+        }
         return responses.fallback[Math.floor(Math.random() * responses.fallback.length)];
       }
 
       function addMessage(content, sender) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('chatbot-message', sender);
-        messageDiv.textContent = content;
+        messageDiv.innerHTML = content.replace(/\n/g, '<br>'); // Support line breaks
         chatbotMessages.appendChild(messageDiv);
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
       }

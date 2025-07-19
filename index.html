@@ -22,6 +22,20 @@
       font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
       overflow-x: hidden;
       margin: 0;
+      position: relative;
+    }
+    /* Premium Noise Texture */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="rgba(255,255,255,0.02)" width="100" height="100"/><g fill="rgba(255,255,255,0.05)"><?php for ($i = 0; $i < 100; $i++) { $x = rand(0, 100); $y = rand(0, 100); echo "<circle cx=\"$x\" cy=\"$y\" r=\"0.5\"/>"; } ?></g></svg>') repeat;
+      opacity: 0.3;
+      z-index: -3;
+      pointer-events: none;
     }
     @keyframes gradientFlow {
       0% { background-position: 0% 50%; }
@@ -38,6 +52,13 @@
     }
     @keyframes fadeIn {
       to { opacity: 1; transform: translateY(0); }
+    }
+    .content-fade {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .content-visible {
+      opacity: 1;
     }
     .portfolio-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -219,8 +240,7 @@
       display: none;
       width: 320px;
       height: 400px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
+      background: rgba(10, 10, 10, 0.95); /* Opaque dark background */
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 18px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
@@ -406,7 +426,7 @@
   </div>
 
   <!-- Header Section -->
-  <header class="header-bg py-16 md:py-24 shadow-2xl">
+  <header class="header-bg py-16 md:py-24 shadow-2xl content-fade">
     <canvas id="globe-canvas"></canvas>
     <div class="container mx-auto text-center flex flex-col items-center px-6 relative z-10">
       <div class="image-wrapper w-56 h-56 md:w-64 md:h-64 rounded-full border-2 border-[#FFFFFF] mb-10 shadow-2xl fade-in" style="animation-delay: 0.3s;">
@@ -433,7 +453,7 @@
   </header>
 
   <!-- About Section -->
-  <section class="py-24 fade-in" style="animation-delay: 0.3s;">
+  <section class="py-24 fade-in content-fade" style="animation-delay: 0.3s;">
     <div class="container mx-auto px-6">
       <h2 class="text-5xl md:text-6xl font-bold text-center mb-8">About Me</h2>
       <div class="glass-effect p-10 max-w-4xl mx-auto leading-relaxed text-lg md:text-xl">
@@ -443,7 +463,7 @@
   </section>
 
   <!-- Skills Section -->
-  <section class="py-24 bg-[#0A0A0A] fade-in" style="animation-delay: 0.5s;">
+  <section class="py-24 bg-[#0A0A0A] fade-in content-fade" style="animation-delay: 0.5s;">
     <div class="container mx-auto px-6">
       <h2 class="text-5xl md:text-6xl font-bold text-center mb-8">What I Do</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -468,7 +488,7 @@
   </section>
 
   <!-- Portfolio Section -->
-  <section class="py-24 fade-in" style="animation-delay: 0.7s;">
+  <section class="py-24 fade-in content-fade" style="animation-delay: 0.7s;">
     <div class="container mx-auto px-6">
       <h2 class="text-5xl md:text-6xl font-bold text-center mb-8">Portfolio/Projects</h2>
       <div class="portfolio-grid">
@@ -530,7 +550,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-24 fade-in" style="animation-delay: 0.9s;">
+  <section id="contact" class="py-24 fade-in content-fade" style="animation-delay: 0.9s;">
     <div class="container mx-auto px-6 text-center">
       <h2 class="text-5xl md:text-6xl font-bold mb-8">Contact Me</h2>
       <a href="mailto:mhmmd.shadil.mp@gmail.com" class="inline-block px-10 py-5 text-lg font-semibold cta-button">
@@ -540,7 +560,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-[#0A0A0A] text-[#FFFFFF] py-10">
+  <footer class="bg-[#0A0A0A] text-[#FFFFFF] py-10 content-fade">
     <div class="container mx-auto text-center">
       <p>© 2025 Muhammed Shadil MP. All rights reserved.</p>
     </div>
@@ -551,6 +571,8 @@
       // Loader Animation
       const loader = document.getElementById('loader');
       const loaderText = document.querySelectorAll('.loader-text span');
+      const contentElements = document.querySelectorAll('.content-fade');
+      
       gsap.to(loaderText, {
         opacity: 1,
         stagger: 0.2,
@@ -563,6 +585,13 @@
             delay: 0.5,
             onComplete: () => {
               loader.classList.add('hidden');
+              // Fade in main content after loader
+              gsap.to(contentElements, {
+                opacity: 1,
+                duration: 1,
+                stagger: 0.2,
+                ease: 'power2.inOut'
+              });
             }
           });
         }

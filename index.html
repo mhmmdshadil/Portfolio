@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <meta name="description" content="Portfolio of Muhammed Shadil MP, a tech enthusiast specializing in UI/UX, AI, and web development.">
   <meta name="keywords" content="Muhammed Shadil, UI/UX, web development, AI, portfolio">
   <meta property="og:title" content="Muhammed Shadil MP Portfolio">
@@ -40,6 +40,8 @@
       border-radius: 16px;
       position: relative;
       overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
     }
     .portfolio-card:hover {
       transform: translateY(-12px);
@@ -101,6 +103,8 @@
       border: 1px solid #1E4A6B;
       overflow: hidden;
       transition: transform 0.5s ease, box-shadow 0.5s ease;
+      max-width: 100%;
+      height: auto;
     }
     .image-wrapper:hover {
       transform: scale(1.05);
@@ -237,6 +241,38 @@
       .portfolio-grid .portfolio-card:last-child {
         grid-column: span 1;
         justify-self: center;
+      }
+    }
+    @media (max-width: 576px) {
+      .header-bg {
+        min-height: 80vh;
+      }
+      .image-wrapper {
+        width: 200px;
+        height: 200px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+    .container {
+      max-width: 100%;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (min-width: 640px) {
+      .container {
+        max-width: 640px;
+      }
+    }
+    @media (min-width: 768px) {
+      .container {
+        max-width: 768px;
       }
     }
   </style>

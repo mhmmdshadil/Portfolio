@@ -18,7 +18,7 @@
       font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       overflow-x: hidden;
       margin: 0;
-      padding-top: 60px; /* Space for fixed header */
+      padding-top: 0; /* Removed space for fixed header */
     }
     html {
       scroll-behavior: smooth;
@@ -93,6 +93,9 @@
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       max-width: 100%;
       height: auto;
+      margin-left: auto;
+      margin-right: auto; /* Center align images */
+      display: block; /* Ensure block-level centering */
     }
     .image-wrapper:hover {
       transform: scale(1.05);

@@ -10,7 +10,7 @@
   <meta property="og:description" content="Explore the portfolio of Muhammed Shadil MP, a tech enthusiast.">
   <title>Muhammed Shadil MP</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,800;0,900;1,400&display=swap" rel="stylesheet">
   <style>
     body {
       background: linear-gradient(135deg, #3C2F2F 0%, #6B4E31 50%, #2A1E1E 100%);
@@ -36,37 +36,15 @@
     }
     .portfolio-card {
       transition: transform 0.5s ease, box-shadow 0.5s ease;
-      background: #4A3728;
+      background: rgba(44, 33, 24, 0.7);
       border: 1px solid #6B4E31;
       border-radius: 16px;
-      position: relative;
       overflow: hidden;
-      width: 100%;
       box-sizing: border-box;
     }
     .portfolio-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 16px 32px rgba(107, 78, 49, 0.4);
-    }
-    .portfolio-card::before {
-      content: '';
-      position: absolute;
-      top: -100%;
-      left: -100%;
-      width: 300%;
-      height: 300%;
-      background: linear-gradient(
-        45deg,
-        transparent,
-        rgba(139, 69, 19, 0.3),
-        transparent
-      );
-      transform: rotate(45deg);
-      animation: shine 6s ease-in-out infinite;
-    }
-    @keyframes shine {
-      0% { transform: translate(-100%, -100%) rotate(45deg); }
-      100% { transform: translate(100%, 100%) rotate(45deg); }
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(107, 78, 49, 0.5);
     }
     .cta-button {
       background: linear-gradient(45deg, #8B4513, #A0522D);
@@ -75,12 +53,16 @@
       padding: 14px 28px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+      box-shadow: 0 6px 16px rgba(139, 69, 19, 0.5);
     }
     .cta-button:hover {
       background: linear-gradient(45deg, #A0522D, #8B4513);
-      transform: scale(1.1);
-      box-shadow: 0 8px 20px rgba(139, 69, 19, 0.5);
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(139, 69, 19, 0.6);
+    }
+    .cta-button:focus {
+      outline: 2px solid #A0522D;
+      outline-offset: 2px;
     }
     .cta-button::before {
       content: '';
@@ -97,6 +79,10 @@
       );
       transform: rotate(45deg);
       animation: shine 4s ease-in-out infinite;
+    }
+    @keyframes shine {
+      0% { transform: translate(-100%, -100%) rotate(45deg); }
+      100% { transform: translate(100%, 100%) rotate(45deg); }
     }
     .image-wrapper {
       background: #5C4033;
@@ -128,7 +114,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(180deg, rgba(60, 47, 47, 0.8), rgba(42, 30, 30, 0.9));
+      background: linear-gradient(180deg, rgba(50, 37, 37, 0.85), rgba(30, 22, 22, 0.95));
       z-index: -1;
     }
     .header-bg::after {
@@ -149,15 +135,15 @@
       100% { background-position: 0% 50%; }
     }
     .glass-effect {
-      background: rgba(74, 55, 40, 0.4);
+      background: rgba(44, 33, 24, 0.7);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(107, 78, 49, 0.3);
       border-radius: 20px;
       transition: all 0.4s ease;
     }
     .glass-effect:hover {
-      background: rgba(74, 55, 40, 0.5);
-      box-shadow: 0 8px 24px rgba(107, 78, 49, 0.2);
+      background: rgba(44, 33, 24, 0.8);
+      box-shadow: 0 8px 24px rgba(107, 78, 49, 0.3);
     }
     .scroll-indicator {
       position: absolute;
@@ -264,13 +250,18 @@
         max-width: 768px;
       }
     }
+    @media (min-width: 1024px) {
+      .container {
+        max-width: 900px;
+      }
+    }
     /* Fixed header panel styles */
     .fixed-header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(74, 55, 40, 0.9);
+      background: rgba(44, 33, 24, 0.9);
       backdrop-filter: blur(10px);
       padding: 10px 20px;
       display: flex;
@@ -328,7 +319,7 @@
       </a>
       <a href="https://www.instagram.com/mhmmd.shadil/" class="social-icon" aria-label="Instagram Profile">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.97.24 2.43.41.58.22 1.01.48 1.46.93.45.45.71.88.93 1.46.17.46.35 1.26.41 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.24 1.97-.41 2.43-.22.58-.48 1.01-.93 1.46-.45.45-.88.71-1.46.93-.46.17-1.26.35-2.43.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.97-.24-2.43-.41-.58-.22-1.01-.48-1.46-.93-.45-.45-.71-.88-.93-1.46-.17-.46-.35-1.26-.41-2.43-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.06-1.17.24-1.97.41-2.43.22-.58.48-1.01.93-1.46.45-.45.88-.71 1.46-.93.46-.17 1.26-.35 2.43-.41 1.27-.06 1.65-.07 4.85-.07zm0-2.16c-3.26 0-3.67.01-4.95.07-1.32.07-2.22.27-3 .57-.78.3-1.44.71-2.1 1.37-.66.66-1.07 1.32-1.37 2.1-.3.78-.5 1.68-.57 3-.06 1.28-.07 1.69-.07 4.95s.01 3.67.07 4.95c.07 1.32.27 2.22.57 3 .3.78.71 1.44 1.37 2.1.66.66 1.32 1.07 2.1 1.37.78.3 1.68.5 3 .57 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.32-.07 2.22-.27 3-.57.78-.3 1.44-.71 2.1-1.37.66-.66 1.07-1.32 1.37-2.1.3-.78.5-1.68.57-3 .06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.07-1.32-.27-2.22-.57-3-.3-.78-.71-1.44-1.37-2.1-.66-.66-1.32-1.07-2.1-1.37-.78-.3-1.68-.5-3-.57-1.28-.06-1.69-.07-4.95-.07zm0 5.83a6.17 6.17 0 100 12.34 6.17 6.17 0 000-12.34zm0 10.17a4 4 0 110-8 4 4 0 010 8zm6.47-10.67a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+          <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.97.24 2.43.41.58.22 1.01.48 1.46.93.45.45.71.88.93 1.46.17.46.35 1.26.41 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.24 1.97-.41 2.43-.22.58-.48 1.01-.93 1.46-.45.45-.88.71-1.46.93-.46.17-1.26.35-2.43.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.97-.24-2.43-.41-.58-.22-1.01-.48-1.46-.93-.45-.45-.71-.88-.93-1.46-.17-.46-.35-1.26-.41-2.43-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c-.06-1.17.24-1.97.41-2.43.22-.58.48-1.01.93-1.46.45-.45.88-.71 1.46-.93.46-.17 1.26-.35 2.43-.41 1.27-.06 1.65-.07 4.85-.07zm0-2.16c-3.26 0-3.67.01-4.95.07-1.32.07-2.22.27-3 .57-.78.3-1.44.71-2.1 1.37-.66.66-1.07 1.32-1.37 2.1-.3.78-.5 1.68-.57 3-.06 1.28-.07 1.69-.07 4.95s.01 3.67.07 4.95c.07 1.32.27 2.22.57 3 .3.78.71 1.44 1.37 2.1.66.66 1.32 1.07 2.1 1.37.78.3 1.68.5 3 .57 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.32-.07 2.22-.27 3-.57.78-.3 1.44-.71 2.1-1.37.66-.66 1.07-1.32 1.37-2.1.3-.78.5-1.68.57-3 .06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.07-1.32-.27-2.22-.57-3-.3-.78-.71-1.44-1.37-2.1-.66-.66-1.32-1.07-2.1-1.37-.78-.3-1.68-.5-3-.57-1.28-.06-1.69-.07-4.95-.07zm0 5.83a6.17 6.17 0 100 12.34 6.17 6.17 0 000-12.34zm0 10.17a4 4 0 110-8 4 4 0 010 8zm6.47-10.67a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
         </svg>
       </a>
     </div>
@@ -345,7 +336,7 @@
           loading="lazy"
         />
       </div>
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight drop-shadow-2xl fade-in" style="animation-delay: 0.5s;">
+      <h1 class="text-5xl md:text-7xl font-black tracking-tight drop-shadow-2xl fade-in" style="animation-delay: 0.5s;">
         <span class="highlight-text">Muhammed Shadil MP</span>
       </h1>
       <p class="mt-6 text-xl md:text-2xl font-semibold fade-in" style="animation-delay: 0.7s;">
@@ -423,7 +414,7 @@
         <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
           <div class="image-wrapper mb-6">
             <img 
-              src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/payroll/PAYROLL.png" 
+              src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/Payroll.png" 
               alt="Payroll Software Preview" 
               class="rounded-xl w-full h-60 object-cover"
               loading="lazy"
@@ -438,20 +429,23 @@
           </a>
         </div>
 
-        <!-- Project 3: Mystery Project -->
+        <!-- Project 3: Ethereal Rythms -->
         <div class="portfolio-card p-10 rounded-xl shadow-xl glass-effect">
           <div class="image-wrapper mb-6">
             <img 
-              src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/mystery/mystery.png" 
-              alt="Mystery Project Preview" 
+              src="https://raw.githubusercontent.com/mhmmdshadil/Ethereal-Rythm/main/Rythm%20image.png" 
+              alt="Ethereal Rythms Preview" 
               class="rounded-xl w-full h-60 object-cover"
               loading="lazy"
             />
           </div>
-          <h3 class="text-2xl font-semibold text-[#A0522D] mb-4">Mystery Project</h3>
+          <h3 class="text-2xl font-semibold text-[#A0522D] mb-4">Ethereal Rythms</h3>
           <p class="text-[#E8D5B9] mb-4">
-            A secret venture blending tech and creativity. Unveiling soon, stay curious!
+            A premium nasheed player with soulful tracks, featuring a modern audio interface with timers and volume controls.
           </p>
+          <a href="https://mhmmdshadil.github.io/Ethereal-Rythm/" class="text-[#A0522D] font-semibold inline-block hover:text-[#8B4513] transition-colors">
+            Visit Ethereal Rythms
+          </a>
         </div>
       </div>
     </div>
@@ -477,14 +471,14 @@
       </a>
       <a href="https://www.instagram.com/mhmmd.shadil/" class="social-icon" aria-label="Instagram Profile">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.97.24 2.43.41.58.22 1.01.48 1.46.93.45.45.71.88.93 1.46.17.46.35 1.26.41 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.24 1.97-.41 2.43-.22.58-.48 1.01-.93 1.46-.45.45-.88.71-1.46.93-.46.17-1.26.35-2.43.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.97-.24-2.43-.41-.58-.22-1.01-.48-1.46-.93-.45-.45-.71-.88-.93-1.46-.17-.46-.35-1.26-.41-2.43-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.06-1.17.24-1.97.41-2.43.22-.58.48-1.01.93-1.46.45-.45.88-.71 1.46-.93.46-.17 1.26-.35 2.43-.41 1.27-.06 1.65-.07 4.85-.07zm0-2.16c-3.26 0-3.67.01-4.95.07-1.32.07-2.22.27-3 .57-.78.3-1.44.71-2.1 1.37-.66.66-1.07 1.32-1.37 2.1-.3.78-.5 1.68-.57 3-.06 1.28-.07 1.69-.07 4.95s.01 3.67.07 4.95c.07 1.32.27 2.22.57 3 .3.78.71 1.44 1.37 2.1.66.66 1.32 1.07 2.1 1.37.78.3 1.68.5 3 .57 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.32-.07 2.22-.27 3-.57.78-.3 1.44-.71 2.1-1.37.66-.66 1.07-1.32 1.37-2.1.3-.78.5-1.68.57-3 .06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.07-1.32-.27-2.22-.57-3-.3-.78-.71-1.44-1.37-2.1-.66-.66-1.32-1.07-2.1-1.37-.78-.3-1.68-.5-3-.57-1.28-.06-1.69-.07-4.95-.07zm0 5.83a6.17 6.17 0 100 12.34 6.17 6.17 0 000-12.34zm0 10.17a4 4 0 110-8 4 4 0 010 8zm6.47-10.67a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+          <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.06 1.97.24 2.43.41.58.22 1.01.48 1.46.93.45.45.71.88.93 1.46.17.46.35 1.26.41 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.06 1.17-.24 1.97-.41 2.43-.22.58-.48 1.01-.93 1.46-.45.45-.88.71-1.46.93-.46.17-1.26.35-2.43.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.06-1.97-.24-2.43-.41-.58-.22-1.01-.48-1.46-.93-.45-.45-.71-.88-.93-1.46-.17-.46-.35-1.26-.41-2.43-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c-.06-1.17.24-1.97.41-2.43.22-.58.48-1.01.93-1.46.45-.45.88-.71 1.46-.93.46-.17 1.26-.35 2.43-.41 1.27-.06 1.65-.07 4.85-.07zm0-2.16c-3.26 0-3.67.01-4.95.07-1.32.07-2.22.27-3 .57-.78.3-1.44.71-2.1 1.37-.66.66-1.07 1.32-1.37 2.1-.3.78-.5 1.68-.57 3-.06 1.28-.07 1.69-.07 4.95s.01 3.67.07 4.95c.07 1.32.27 2.22.57 3 .3.78.71 1.44 1.37 2.1.66.66 1.32 1.07 2.1 1.37.78.3 1.68.5 3 .57 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.32-.07 2.22-.27 3-.57.78-.3 1.44-.71 2.1-1.37.66-.66 1.07-1.32 1.37-2.1.3-.78.5-1.68.57-3 .06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.07-1.32-.27-2.22-.57-3-.3-.78-.71-1.44-1.37-2.1-.66-.66-1.32-1.07-2.1-1.37-.78-.3-1.68-.5-3-.57-1.28-.06-1.69-.07-4.95-.07zm0 5.83a6.17 6.17 0 100 12.34 6.17 6.17 0 000-12.34zm0 10.17a4 4 0 110-8 4 4 0 010 8zm6.47-10.67a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
         </svg>
       </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gradient-to-r from-[#3C2F2F] to-[#2A1E1E] text-[#E8D5B9] py-10">
+  <footer class="bg-gradient-to-r from-[#3C2F2F] to-[#2A1E1E] text-[#E8D5B9] py-12 border-t border-[#6B4E31]">
     <div class="container mx-auto text-center">
       <p>© 2025 Muhammed Shadil MP. All rights reserved.</p>
     </div>

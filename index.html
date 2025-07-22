@@ -285,10 +285,15 @@
       width: 40px;
       height: 40px;
       border: 2px solid #A0522D;
+      border-radius: 50%; /* Ensure circular frame */
+      overflow: hidden; /* Clip the image to the frame */
       margin-right: 15px;
     }
     .fixed-header .image-wrapper img {
-      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensure the image fits and scales properly */
+      border-radius: 50%; /* Match the frame's circular shape */
     }
     .fixed-header .header-content {
       display: flex;
@@ -428,7 +433,7 @@
           <p class="text-[#E8D5B9] mb-4">
             An Excel-based payroll software designed to streamline employee salary calculations and management.
           </p>
-          <a href="https://github.com/mhmmdshadil/muhammed-shadil/blob/main/payroll/payroll.xlsx" class="text-[#A0522D] font-semibold inline-block hover:text-[#8B4513] transition-colors">
+          <a href="download-page.html" class="text-[#A0522D] font-semibold inline-block hover:text-[#8B4513] transition-colors">
             View Payroll Software
           </a>
         </div>

@@ -39,7 +39,7 @@
       line-height: 1.6;
     }
 
-    /* Premium Glass Cards */
+    /* Glass Cards */
     .glass {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -199,7 +199,7 @@
       background: rgba(10, 10, 10, 0.7);
     }
     
-    /* Profile image enhancement - ring removed */
+    /* Profile image enhancement */
     .profile-img-container {
       position: relative;
       display: inline-block;
@@ -251,7 +251,7 @@
       position: relative;
       overflow: hidden;
       width: 100%;
-      padding: 20px 0;
+      padding: 20px 0 60px;
     }
     
     .carousel-container {
@@ -267,44 +267,25 @@
       margin: 0 15px;
     }
     
-    .carousel-nav {
-      position: absolute;
-      top: 50%;
-      width: 100%;
+    .carousel-dots {
       display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      pointer-events: none;
-      z-index: 10;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 12px;
     }
     
-    .carousel-btn {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      width: 50px;
-      height: 50px;
+    .carousel-dot {
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
+      background: rgba(255, 255, 255, 0.2);
       cursor: pointer;
-      pointer-events: auto;
       transition: all 0.3s ease;
     }
     
-    .carousel-btn:hover {
+    .carousel-dot.active {
       background: var(--accent);
-      color: #141414;
-    }
-    
-    .carousel-btn.prev {
-      margin-left: 20px;
-    }
-    
-    .carousel-btn.next {
-      margin-right: 20px;
+      transform: scale(1.2);
     }
     
     /* Scroll down arrow */
@@ -393,8 +374,8 @@
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="mb-8">About Me</h2>
       <div class="glass p-10 leading-relaxed text-lg">
-        I create digital experiences that combine luxury aesthetics with high-performance technology.  
-        My work focuses on clarity, depth, and premium design principles —  
+        I create digital experiences that combine aesthetics with high-performance technology.  
+        My work focuses on clarity, depth, and thoughtful design principles —  
         whether it's elegant UI, refined UX, or next-level web applications.
       </div>
     </div>
@@ -410,7 +391,7 @@
             <i data-lucide="palette" class="text-gray-900" width="28" height="28"></i>
           </div>
           <h3 class="text-lg font-semibold mb-3">UI/UX Design</h3>
-          <p class="text-sm">Premium, intuitive interfaces for web & mobile.</p>
+          <p class="text-sm">Intuitive interfaces for web & mobile.</p>
         </div>
         
         <div class="glass p-8 skill-card">
@@ -434,7 +415,7 @@
             <i data-lucide="pen-tool" class="text-gray-900" width="28" height="28"></i>
           </div>
           <h3 class="text-lg font-semibold mb-3">Creative Direction</h3>
-          <p class="text-sm">Minimal, impactful design for brands & products.</p>
+          <p class="text-sm">Impactful design for brands & products.</p>
         </div>
       </div>
     </div>
@@ -474,16 +455,24 @@
             </div>
           </div>
           
-          <!-- Add more portfolio items here if needed -->
+          <!-- To-Do List App -->
+          <div class="carousel-item">
+            <div class="glass p-6 portfolio-item overflow-hidden">
+              <div class="overflow-hidden rounded-xl mb-5">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='300' viewBox='0 0 500 300'%3E%3Crect width='500' height='300' fill='%23141414'/%3E%3Crect x='50' y='50' width='400' height='200' rx='10' fill='%230a0a0a' stroke='%23d4af37' stroke-width='2'/%3E%3Ccircle cx='80' cy='100' r='15' fill='%23d4af37'/%3E%3Cpath d='M75 100 L85 110 L100 85' stroke='%23000' stroke-width='2' fill='none'/%3E%3Crect x='110' y='90' width='200' height='10' rx='2' fill='%23d4af37'/%3E%3Ccircle cx='80' cy='150' r='15' fill='rgba(255,255,255,0.1)'/%3E%3Crect x='110' y='140' width='250' height='10' rx='2' fill='rgba(255,255,255,0.1)'/%3E%3Crect x='380' y='90' width='50' height='30' rx='5' fill='%23d4af37'/%3E%3C/svg%3E" alt="To-Do List App" class="w-full h-52 object-cover transition-transform duration-500">
+              </div>
+              <h3 class="text-lg font-semibold mb-3">To-Do List App</h3>
+              <p class="mb-5 text-sm">Task management with clean UI/UX design.</p>
+              <a href="todo-app.html" target="_blank" class="text-accent hover:underline flex items-center justify-center gap-2 font-medium">
+                Try It Out <i data-lucide="arrow-right" width="16" height="16"></i>
+              </a>
+            </div>
+          </div>
         </div>
         
-        <div class="carousel-nav">
-          <button class="carousel-btn prev">
-            <i data-lucide="chevron-left" width="24" height="24"></i>
-          </button>
-          <button class="carousel-btn next">
-            <i data-lucide="chevron-right" width="24" height="24"></i>
-          </button>
+        <!-- Carousel dots navigation -->
+        <div class="carousel-dots" id="carouselDots">
+          <!-- Dots will be added dynamically -->
         </div>
       </div>
     </div>
@@ -514,28 +503,55 @@
     function initCarousel() {
       const carousel = document.querySelector('.carousel-container');
       const items = document.querySelectorAll('.carousel-item');
-      const prevBtn = document.querySelector('.carousel-btn.prev');
-      const nextBtn = document.querySelector('.carousel-btn.next');
+      const dotsContainer = document.getElementById('carouselDots');
       
       let currentIndex = 0;
       let autoSlideInterval;
       let isPaused = false;
       
+      // Create dots for navigation
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < items.length; i++) {
+          const dot = document.createElement('div');
+          dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
+          dot.addEventListener('click', () => {
+            goToSlide(i);
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+      
+      // Update dots active state
+      function updateDots() {
+        const dots = document.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+          if (index === currentIndex) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
+      
       // Function to update carousel position
       function updateCarousel() {
         const itemWidth = items[0].offsetWidth + 30; // Width + margin
         carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+        updateDots();
+      }
+      
+      // Go to specific slide
+      function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+        stopAutoSlide();
+        startAutoSlide();
       }
       
       // Next slide function
       function nextSlide() {
         currentIndex = (currentIndex + 1) % items.length;
-        updateCarousel();
-      }
-      
-      // Previous slide function
-      function prevSlide() {
-        currentIndex = (currentIndex - 1 + items.length) % items.length;
         updateCarousel();
       }
       
@@ -550,19 +566,6 @@
       function stopAutoSlide() {
         clearInterval(autoSlideInterval);
       }
-      
-      // Event listeners for buttons
-      nextBtn.addEventListener('click', () => {
-        nextSlide();
-        stopAutoSlide();
-        startAutoSlide();
-      });
-      
-      prevBtn.addEventListener('click', () => {
-        prevSlide();
-        stopAutoSlide();
-        startAutoSlide();
-      });
       
       // Touch events for mobile
       let startX, moveX;
@@ -591,7 +594,7 @@
             nextSlide();
           } else {
             // Swipe right - previous slide
-            prevSlide();
+            goToSlide((currentIndex - 1 + items.length) % items.length);
           }
         }
         
@@ -613,6 +616,7 @@
       });
       
       // Initialize
+      createDots();
       updateCarousel();
       startAutoSlide();
       

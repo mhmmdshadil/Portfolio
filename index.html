@@ -45,11 +45,66 @@
       z-index: -1;
     }
 
+    /* Apple SF Display Font Stack */
+    @font-face {
+      font-family: 'SF Display';
+      font-weight: 100;
+      src: url('https://sf.abarba.me/SF-UI-Display-Ultralight.otf');
+    }
+    
+    @font-face {
+      font-family: 'SF Display';
+      font-weight: 200;
+      src: url('https://sf.abarba.me/SF-UI-Display-Thin.otf');
+    }
+    
+    @font-face {
+      font-family: 'SF Display';
+      font-weight: 300;
+      src: url('https://sf.abarba.me/SF-UI-Display-Light.otf');
+    }
+    
+    @font-face {
+      font-family: 'SF Display';
+      font-weight: 400;
+      src: url('https://sf.abarba.me/SF-UI-Display-Regular.otf');
+    }
+    
+    @font-face {
+      font-family: 'SF Display';
+      font-weight: 500;
+      src: url('https://sf.abarba.me/SF-UI-Display-Medium.otf');
+    }
+    
+    @font-face {
+      font-family: 'SF Display';
+      font-weight: 600;
+      src: url('https://sf.abarba.me/SF-UI-Display-Semibold.otf');
+    }
+    
+    @font-face {
+      font-family: 'SF Display';
+      font-weight: 700;
+      src: url('https://sf.abarba.me/SF-UI-Display-Bold.otf');
+    }
+    
+    @font-face {
+      font-family: 'SF Display';
+      font-weight: 800;
+      src: url('https://sf.abarba.me/SF-UI-Display-Heavy.otf');
+    }
+    
+    @font-face {
+      font-family: 'SF Display';
+      font-weight: 900;
+      src: url('https://sf.abarba.me/SF-UI-Display-Black.otf');
+    }
+
     h1, h2, h3, h4 { 
       font-weight: 600; 
       color: var(--text-primary); 
       letter-spacing: -0.5px; 
-      font-family: 'Cinzel', serif;
+      font-family: 'SF Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     
     p { 
@@ -141,7 +196,7 @@
       box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
       position: relative;
       overflow: hidden;
-      font-family: 'Cinzel', serif;
+      font-family: 'SF Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       letter-spacing: 1px;
     }
     
@@ -191,13 +246,28 @@
     }
 
     /* Typography scaling */
-    h1 { 
-      font-size: clamp(2.8rem, 7vw, 4.5rem); 
+    .hero-name { 
+      font-size: clamp(3.5rem, 9vw, 6rem); 
       background: linear-gradient(135deg, #f5f5f5 0%, var(--accent-light) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 16px;
+      margin-bottom: 0;
       text-shadow: 0 2px 10px rgba(139, 69, 19, 0.3);
+      line-height: 1;
+      font-weight: 700;
+      font-family: 'SF Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      letter-spacing: -1.5px;
+    }
+    
+    .hero-subtitle {
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-top: 10px;
+      margin-bottom: 30px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-family: 'SF Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     
     h2 { 
@@ -205,6 +275,7 @@
       position: relative;
       display: inline-block;
       margin-bottom: 40px;
+      font-family: 'SF Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     }
     
     h2:after {
@@ -319,25 +390,48 @@
       margin: 0 15px;
     }
     
-    .carousel-dots {
+    /* Arrow navigation */
+    .carousel-arrows {
       display: flex;
       justify-content: center;
       margin-top: 30px;
-      gap: 12px;
+      gap: 20px;
     }
     
-    .carousel-dot {
-      width: 12px;
-      height: 12px;
+    .carousel-arrow {
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       transition: all 0.3s ease;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-secondary);
     }
     
-    .carousel-dot.active {
-      background: var(--accent);
-      transform: scale(1.2);
+    .carousel-arrow:hover {
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #f5f5f5;
+      transform: translateY(-3px);
+      border: none;
+      box-shadow: 0 5px 15px rgba(139, 69, 19, 0.4);
+    }
+    
+    .carousel-arrow.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    .carousel-arrow.disabled:hover {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-secondary);
+      transform: none;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: none;
     }
     
     /* Scroll down arrow */
@@ -388,9 +482,9 @@
   <div class="fixed-header">
     <div class="flex items-center gap-3">
       <div class="profile-img-container">
-        <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" width="40" height="40" alt="Profile" class="rounded-full">
+        <img src="https://github.com/mhmmdshadil/muhammed-shadil/raw/main/images/pfp.jpeg" width="40" height="40" alt="Profile" class="rounded-full">
       </div>
-      <span class="font-semibold tracking-wide text-white" style="font-family: 'Cinzel', serif;">Muhammed Shadil MP</span>
+      <span class="font-semibold tracking-wide text-white" style="font-family: 'SF Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">Muhammed Shadil MP</span>
     </div>
     
     <!-- Social handles in header -->
@@ -408,11 +502,11 @@
   <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 fade-up relative burned-edge">
     <div class="mb-8">
       <div class="profile-img-container">
-        <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/images/profile.jpg.jpg" alt="Muhammed Shadil MP" class="w-48 h-48 object-cover rounded-full shadow-lg">
+        <img src="https://github.com/mhmmdshadil/muhammed-shadil/raw/main/images/pfp.jpeg" alt="Muhammed Shadil MP" class="w-48 h-48 object-cover rounded-full shadow-lg">
       </div>
     </div>
-    <h1>Muhammed Shadil MP</h1>
-    <p class="mt-3 text-lg md:text-xl font-medium">UI/UX Designer <span class="accent-dot"></span> Web Developer</p>
+    <h1 class="hero-name">Muhammed Shadil MP</h1>
+    <p class="hero-subtitle">IT STUDENT</p>
     <a href="#contact" class="cta-button mt-10">Let's Connect</a>
     
     <!-- Scroll down arrow -->
@@ -524,9 +618,14 @@
           </div>
         </div>
         
-        <!-- Carousel dots navigation -->
-        <div class="carousel-dots" id="carouselDots">
-          <!-- Dots will be added dynamically -->
+        <!-- Arrow navigation -->
+        <div class="carousel-arrows">
+          <div class="carousel-arrow prev-arrow">
+            <i data-lucide="arrow-left" width="24" height="24"></i>
+          </div>
+          <div class="carousel-arrow next-arrow">
+            <i data-lucide="arrow-right" width="24" height="24"></i>
+          </div>
         </div>
       </div>
     </div>
@@ -557,69 +656,40 @@
     function initCarousel() {
       const carousel = document.querySelector('.carousel-container');
       const items = document.querySelectorAll('.carousel-item');
-      const dotsContainer = document.getElementById('carouselDots');
+      const prevArrow = document.querySelector('.prev-arrow');
+      const nextArrow = document.querySelector('.next-arrow');
       
       let currentIndex = 0;
-      let autoSlideInterval;
-      let isPaused = false;
-      
-      // Create dots for navigation
-      function createDots() {
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i < items.length; i++) {
-          const dot = document.createElement('div');
-          dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
-          dot.addEventListener('click', () => {
-            goToSlide(i);
-          });
-          dotsContainer.appendChild(dot);
-        }
-      }
-      
-      // Update dots active state
-      function updateDots() {
-        const dots = document.querySelectorAll('.carousel-dot');
-        dots.forEach((dot, index) => {
-          if (index === currentIndex) {
-            dot.classList.add('active');
-          } else {
-            dot.classList.remove('active');
-          }
-        });
-      }
       
       // Function to update carousel position
       function updateCarousel() {
         const itemWidth = items[0].offsetWidth + 30; // Width + margin
         carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-        updateDots();
-      }
-      
-      // Go to specific slide
-      function goToSlide(index) {
-        currentIndex = index;
-        updateCarousel();
-        stopAutoSlide();
-        startAutoSlide();
+        
+        // Update arrow states
+        prevArrow.classList.toggle('disabled', currentIndex === 0);
+        nextArrow.classList.toggle('disabled', currentIndex === items.length - 1);
       }
       
       // Next slide function
       function nextSlide() {
-        currentIndex = (currentIndex + 1) % items.length;
-        updateCarousel();
+        if (currentIndex < items.length - 1) {
+          currentIndex++;
+          updateCarousel();
+        }
       }
       
-      // Auto slide function
-      function startAutoSlide() {
-        autoSlideInterval = setInterval(() => {
-          if (!isPaused) nextSlide();
-        }, 4000); // Change slide every 4 seconds
+      // Previous slide function
+      function prevSlide() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+        }
       }
       
-      // Stop auto slide function
-      function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-      }
+      // Event listeners for arrows
+      nextArrow.addEventListener('click', nextSlide);
+      prevArrow.addEventListener('click', prevSlide);
       
       // Touch events for mobile
       let startX, moveX;
@@ -627,8 +697,6 @@
       
       carouselContainer.addEventListener('touchstart', (e) => {
         startX = e.touches[0].clientX;
-        isPaused = true;
-        stopAutoSlide();
       });
       
       carouselContainer.addEventListener('touchmove', (e) => {
@@ -648,31 +716,16 @@
             nextSlide();
           } else {
             // Swipe right - previous slide
-            goToSlide((currentIndex - 1 + items.length) % items.length);
+            prevSlide();
           }
         }
         
         startX = null;
         moveX = null;
-        isPaused = false;
-        startAutoSlide();
-      });
-      
-      // Pause auto slide when hovering over carousel
-      carouselContainer.addEventListener('mouseenter', () => {
-        isPaused = true;
-        stopAutoSlide();
-      });
-      
-      carouselContainer.addEventListener('mouseleave', () => {
-        isPaused = false;
-        startAutoSlide();
       });
       
       // Initialize
-      createDots();
       updateCarousel();
-      startAutoSlide();
       
       // Update on window resize
       window.addEventListener('resize', updateCarousel);

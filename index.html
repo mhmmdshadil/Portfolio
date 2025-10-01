@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Muhammed Shadil MP</title>
 
-  <!-- Tailwind -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- CSS -->
+  <!-- External CSS -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
+  <!-- Fixed Header -->
   <div class="fixed-header">
     <div class="flex items-center gap-3">
       <div class="profile-img-container">
@@ -37,7 +37,7 @@
     </div>
   </div>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <header class="min-h-screen flex flex-col justify-center items-center text-center px-6 fade-up relative burned-edge">
     <div class="mb-8">
       <div class="profile-img-container">
@@ -56,4 +56,90 @@
   <section id="about" class="px-6 fade-up">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="mb-8">About Me</h2>
-      <div class="glass p-10 leading-relaxed te
+      <div class="glass p-10 leading-relaxed text-lg burned-edge">
+        I create digital experiences that combine aesthetics with high-performance technology.  
+        My work focuses on clarity, depth, and thoughtful design principles.
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="px-6 fade-up">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="mb-12">Expertise</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass p-8 skill-card burned-edge">
+          <i data-lucide="palette" class="text-gray-100 w-10 h-10 mb-4"></i>
+          <h3 class="text-lg font-semibold mb-3">UI/UX Design</h3>
+          <p class="text-sm">Intuitive interfaces for web & mobile.</p>
+        </div>
+        <div class="glass p-8 skill-card burned-edge">
+          <i data-lucide="brain" class="text-gray-100 w-10 h-10 mb-4"></i>
+          <h3 class="text-lg font-semibold mb-3">AI Solutions</h3>
+          <p class="text-sm">Integrating AI into workflows with elegance.</p>
+        </div>
+        <div class="glass p-8 skill-card burned-edge">
+          <i data-lucide="code" class="text-gray-100 w-10 h-10 mb-4"></i>
+          <h3 class="text-lg font-semibold mb-3">Web Development</h3>
+          <p class="text-sm">Scalable, fast, and refined builds.</p>
+        </div>
+        <div class="glass p-8 skill-card burned-edge">
+          <i data-lucide="pen-tool" class="text-gray-100 w-10 h-10 mb-4"></i>
+          <h3 class="text-lg font-semibold mb-3">Creative Direction</h3>
+          <p class="text-sm">Impactful design for brands & products.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="px-6 fade-up">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="mb-12">Portfolio</h2>
+      <div class="portfolio-carousel">
+        <div class="carousel-container">
+          <div class="carousel-item glass burned-edge p-6">
+            <img src="https://raw.githubusercontent.com/mhmmdshadil/muhammed-shadil/main/Payroll.png" class="w-full h-52 object-cover mb-4">
+            <h3>Payora - Payroll Software</h3>
+            <a href="https://github.com/mhmmdshadil/muhammed-shadil/raw/main/payroll.xlsx" class="text-accent">Download</a>
+          </div>
+          <div class="carousel-item glass burned-edge p-6">
+            <img src="https://github.com/mhmmdshadil/Demo-website/blob/main/Learn%20Vault.png?raw=true" class="w-full h-52 object-cover mb-4">
+            <h3>LearnVault</h3>
+            <a href="https://mhmmdshadil.github.io/learnvault/" class="text-accent">Visit Site</a>
+          </div>
+          <div class="carousel-item glass burned-edge p-6">
+            <img src="https://via.placeholder.com/500x300" class="w-full h-52 object-cover mb-4">
+            <h3>To-Do List App</h3>
+            <a href="https://mhmmdshadil.github.io/To-do-list-/" target="_blank" class="text-accent">Try It Out</a>
+          </div>
+        </div>
+        <div class="carousel-arrows">
+          <div class="carousel-arrow prev-arrow"><i data-lucide="arrow-left"></i></div>
+          <div class="carousel-arrow next-arrow"><i data-lucide="arrow-right"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="px-6 text-center fade-up">
+    <h2>Get In Touch</h2>
+    <a href="mailto:mhmmd.shadil.mp@gmail.com" class="cta-button">Send a Message</a>
+    <div class="social-icons flex justify-center mt-8">
+      <a href="https://github.com/mhmmdshadil"><i data-lucide="github"></i></a>
+      <a href="https://instagram.com/mhmmd.shadil/"><i data-lucide="instagram"></i></a>
+      <a href="https://x.com/mhmmd_shadil"><i data-lucide="twitter"></i></a>
+      <a href="https://linkedin.com/in/muhammed-shadil-9a980736a/"><i data-lucide="linkedin"></i></a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 text-center">
+    © 2025 Muhammed Shadil MP. All rights reserved.
+  </footer>
+
+  <!-- External JS -->
+  <script src="script.js"></script>
+</body>
+</html>
